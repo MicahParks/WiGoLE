@@ -34,41 +34,13 @@ type Parameters struct {
 	SearchAfter    string // What is this?
 }
 
-type Result struct {
-	Trilat      float64
-	Trilong     float64
-	Ssid        string
-	Qos         int
-	Transid     string
-	Firsttime   time.Time
-	Lasttime    time.Time
-	Lastupdt    time.Time
-	Netid       string
-	Name        string
-	Type        string
-	Comment     string
-	Wep         string
-	Bcninterval int
-	Freenet     string
-	Dhcp        string
-	Paynet      string
-	Userfound   bool
-	Channel     int
-	Encryption  string
-	Country     string
-	Region      string
-	City        string
-	Housenumber string
-	Road        string
-	Postalcode  string
-}
 type Response struct {
 	Success      bool
 	TotalResults int
 	First        int
 	Last         int
 	ResultCount  int
-	Results      []Result
+	Results      []network.Result
 	SearchAfter  string
 	Search_after int
 }
