@@ -5,7 +5,7 @@ import (
 	"io/ioutil"
 
 	"gitlab.com/MicahParks/wigole"
-	"gitlab.com/MicahParks/wigole/cell/search"
+	"gitlab.com/MicahParks/wigole/network/detail"
 	"gitlab.com/MicahParks/wigole/user"
 )
 
@@ -27,13 +27,9 @@ func main() {
 		return
 	}
 	u := user.New(cred.Password, cred.Username)
-	s := search.New()
-	s.Cell_op = "1915"
-	s.Latrange1 = 37.0078
-	s.Latrange2 = 38.0348
-	s.Longrange1 = -122.6535
-	s.Longrange2 = -121.3351
-	resp, err := s.Do(u)
+	d := detail.New()
+	d.NetId = "not working yet"
+	resp, err := d.Do(u)
 	if err != nil {
 		if err == wigole.ErrTooMany {
 			println("Too many queries of that type for today.")
@@ -45,5 +41,5 @@ func main() {
 		}
 		panic(err)
 	}
-	println(resp.Results[0].Netid)
+	println(len(resp.Results))
 }

@@ -5,7 +5,7 @@ import (
 	"io/ioutil"
 
 	"gitlab.com/MicahParks/wigole"
-	"gitlab.com/MicahParks/wigole/network/detail"
+	"gitlab.com/MicahParks/wigole/bluetooth/detail"
 	"gitlab.com/MicahParks/wigole/user"
 )
 
@@ -15,8 +15,7 @@ type creds struct {
 }
 
 func main() {
-	// Search for all Wifi networks that have the SSID of "Harambe", print the number of results.
-	// It'll cap out at 100, but you get the idea.
+	// TODO Needs verification that this is working.
 	cred := creds{}
 	c, err := ioutil.ReadFile("creds.json")
 	if err != nil {
@@ -29,7 +28,7 @@ func main() {
 	}
 	u := user.New(cred.Password, cred.Username)
 	d := detail.New()
-	d.NetId = "not working yet"
+	d.Netid = "SOMETHING"
 	resp, err := d.Do(u)
 	if err != nil {
 		if err == wigole.ErrTooMany {

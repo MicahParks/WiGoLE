@@ -34,3 +34,7 @@ func (p *Parameters) Do(u *user.User) (*wigole.Response, error) {
 	}
 	return resp, nil
 }
+
+func New() *Parameters {
+	return &Parameters{}
+}
