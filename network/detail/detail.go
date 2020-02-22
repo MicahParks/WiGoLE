@@ -10,9 +10,8 @@ import (
 
 var Url = "network/detail?"
 
-func (p *Parameters) BuildUrl() string {
+func (p *Parameters) BuildUrl() (url string, err error) {
 	// TODO Check to see if any values are legally zero.
-	url := ""
 	if len(p.NetId) != 0 {
 		url += fmt.Sprintf("&netId=%s", p.NetId)
 	}
@@ -38,11 +37,14 @@ func (p *Parameters) BuildUrl() string {
 	if p.Basestation != 0 {
 		url += fmt.Sprintf("&basestation=%d", p.Basestation)
 	}
-	return url
+	return url, nil
 }
 
 func (p *Parameters) Do(u *user.User) (*Response, error) {
-	url := p.BuildUrl()
+	url, err := p.BuildUrl()
+	if err != nil {
+		return nil, err
+	}
 	resp, err := u.Do("GET", Url+url, nil)
 	if err != nil {
 		return nil, err

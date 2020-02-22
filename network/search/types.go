@@ -33,14 +33,3 @@ type Parameters struct {
 	ResultsPerPage uint16 // Defaults to 25 for COMMAPI, 100 for site. Bounded at 1000 for COMMAPI, 100 for site.
 	SearchAfter    string // What is this?
 }
-
-type Response struct {
-	Success      bool
-	TotalResults int
-	First        int
-	Last         int
-	ResultCount  int
-	Results      []network.Result
-	SearchAfter  string
-	Search_after int
-}

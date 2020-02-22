@@ -4,9 +4,6 @@ import (
 	"time"
 )
 
-type Encryption string
-type Network string
-
 const (
 	None    Encryption = "None"
 	WEP     Encryption = "WEP"
@@ -19,6 +16,8 @@ const (
 	LTE     Network    = "LTE"
 	WIFI    Network    = "WIFI"
 )
+
+type Encryption string
 
 type LocationData struct {
 	Alt             float64
@@ -39,32 +38,4 @@ type LocationData struct {
 	EncryptionValue string
 }
 
-type Result struct {
-	Trilat       float64
-	Trilong      float64
-	Ssid         string
-	Qos          int
-	Transid      string
-	Firsttime    time.Time
-	Lasttime     time.Time
-	Lastupdt     time.Time
-	Netid        string
-	Name         string
-	Type         string
-	Comment      string
-	Wep          string
-	Bcninterval  int
-	Freenet      string
-	Dhcp         string
-	Paynet       string
-	Userfound    bool
-	Channel      int
-	LocationData []LocationData
-	Encryption   string
-	Country      string
-	Region       string
-	City         string
-	Housenumber  string
-	Road         string
-	Postalcode   string
-}
+type Network string

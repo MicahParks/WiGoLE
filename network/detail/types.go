@@ -1,19 +1,9 @@
 package detail
 
 import (
+	"gitlab.com/MicahParks/wigole"
 	"gitlab.com/MicahParks/wigole/network"
 )
-
-type Parameters struct {
-	NetId       string
-	Operator    uint64
-	Lac         uint64
-	Cid         uint64
-	Type        network.Network
-	System      uint64
-	Network     uint64
-	Basestation uint64
-}
 
 type Address struct {
 	Address      map[string]string
@@ -27,6 +17,17 @@ type Address struct {
 	Boundingbox  []float64
 }
 
+type Parameters struct {
+	NetId       string
+	Operator    uint64
+	Lac         uint64
+	Cid         uint64
+	Type        network.Network
+	System      uint64
+	Network     uint64
+	Basestation uint64
+}
+
 type Response struct {
 	Success   bool
 	Cdma      bool
@@ -35,5 +36,5 @@ type Response struct {
 	Wcdma     bool
 	Wifi      bool
 	Addresses []Address
-	Results   []network.Result
+	Results   []wigole.Result
 }

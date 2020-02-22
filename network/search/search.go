@@ -1,16 +1,16 @@
 package search
 
 import (
-	"encoding/json"
 	"errors"
 	"fmt"
-	"io/ioutil"
 
+	"gitlab.com/MicahParks/wigole"
 	"gitlab.com/MicahParks/wigole/date"
 	"gitlab.com/MicahParks/wigole/user"
 )
 
-const Url = "network/search?"
+const ApiUrl = "network/search?"
+const Method = "GET"
 
 var errVariance = errors.New("variance must be between 0.001 and 0.2")
 
@@ -84,24 +84,13 @@ func (p *Parameters) BuildUrl() (url string, err error) {
 	return
 }
 
-func (p *Parameters) Do(u *user.User) (*Response, error) {
-	url, err := p.BuildUrl()
-	if err != nil {
+func (p *Parameters) Do(u *user.User) (*wigole.Response, error) {
+	// TODO See if this works, then implement it for the others.
+	resp := &wigole.Response{}
+	if err := wigole.Do(p, Method, resp, ApiUrl, u); err != nil {
 		return nil, err
 	}
-	resp, err := u.Do("GET", Url+url, nil)
-	if err != nil {
-		return nil, err
-	}
-	body, err := ioutil.ReadAll(resp.Body)
-	if err != nil {
-		return nil, err
-	}
-	r := &Response{}
-	if err = json.Unmarshal(body, r); err != nil {
-		return nil, err
-	}
-	return r, nil
+	return resp, nil
 }
 
 func New() *Parameters {
