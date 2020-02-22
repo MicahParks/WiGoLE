@@ -4,6 +4,7 @@ import (
 	"encoding/json"
 	"io/ioutil"
 
+	"gitlab.com/MicahParks/wigole"
 	"gitlab.com/MicahParks/wigole/network/search"
 	"gitlab.com/MicahParks/wigole/user"
 )
@@ -31,6 +32,14 @@ func main() {
 	s.Ssid = "Harambe"
 	resp, err := s.Do(u)
 	if err != nil {
+		if err == wigole.ErrTooMany {
+			println("Too many queries of that type for today.")
+			return
+		}
+		if err == wigole.ErrAuth {
+			println("Failed to authenticate with creds.json.")
+			return
+		}
 		panic(err)
 	}
 	println(resp.TotalResults)

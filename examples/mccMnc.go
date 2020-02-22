@@ -4,6 +4,7 @@ import (
 	"encoding/json"
 	"io/ioutil"
 
+	"gitlab.com/MicahParks/wigole"
 	"gitlab.com/MicahParks/wigole/cell/mccMnc"
 	"gitlab.com/MicahParks/wigole/user"
 )
@@ -31,6 +32,14 @@ func main() {
 	m.Mnc = 110
 	resp, err := m.Do(u)
 	if err != nil {
+		if err == wigole.ErrTooMany {
+			println("Too many queries of that type for today.")
+			return
+		}
+		if err == wigole.ErrAuth {
+			println("Failed to authenticate with creds.json.")
+			return
+		}
 		panic(err)
 	}
 	for k, v := range resp {
