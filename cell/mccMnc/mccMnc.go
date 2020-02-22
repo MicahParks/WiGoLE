@@ -65,7 +65,7 @@ func (p *Parameters) Do(u *user.User) ([]*Response, error) {
 		return nil, wigole.ErrUpdate
 	}
 	var master string
-	for k := range m {
+	for k := range m { // TODO This is only the case when MCC is included find a way to fix this for MNC.
 		master = k
 	}
 	for k, v := range m[master] {
