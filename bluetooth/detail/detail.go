@@ -8,8 +8,10 @@ import (
 	"gitlab.com/MicahParks/wigole/user"
 )
 
-const Method = "GET"
-const ApiUrl = "bluetooth/detail?"
+const (
+	Method = "GET"
+	ApiUrl = "bluetooth/detail?"
+)
 
 func (p *Parameters) Body() (io.Reader, error) {
 	return nil, nil

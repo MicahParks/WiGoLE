@@ -8,8 +8,10 @@ import (
 	"gitlab.com/MicahParks/wigole/user"
 )
 
-const ApiUrl = "network/detail?"
-const Method = "GET"
+const (
+	ApiUrl = "network/detail?"
+	Method = "GET"
+)
 
 func (p *Parameters) Body() (io.Reader, error) {
 	return nil, nil

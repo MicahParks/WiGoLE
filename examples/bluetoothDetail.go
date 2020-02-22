@@ -4,7 +4,7 @@ import (
 	"encoding/json"
 	"io/ioutil"
 
-	"gitlab.com/MicahParks/wigole/cell/mccMnc"
+	"gitlab.com/MicahParks/wigole/network/detail"
 	"gitlab.com/MicahParks/wigole/user"
 )
 
@@ -27,16 +27,11 @@ func main() {
 		return
 	}
 	u := user.New(cred.Password, cred.Username)
-	m := mccMnc.New()
-	m.Mnc = 110
-	resp, err := m.Do(u)
+	d := detail.New()
+	d.NetId = "not working yet"
+	resp, err := d.Do(u)
 	if err != nil {
 		panic(err)
 	}
-	for k, v := range resp {
-		if len(v) != 0 {
-			println(k)
-			return
-		}
-	}
+	println(len(resp.Results))
 }
