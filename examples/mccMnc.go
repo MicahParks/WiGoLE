@@ -6,8 +6,7 @@ import (
 )
 
 func main() {
-	// Search for all Wifi networks that have the SSID of "Harambe", print the number of results.
-	// It'll cap out at 100, but you get the idea.
+	// Search for metadata on the MCC 310. Print the first result's key.
 	password := "password"
 	username := "username"
 	u := user.New(password, username)
@@ -17,5 +16,5 @@ func main() {
 	if err != nil {
 		panic(err)
 	}
-	resp
+	println(resp[0].Key)
 }

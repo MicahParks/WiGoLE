@@ -15,6 +15,7 @@ type User struct {
 }
 
 func (u *User) Do(method string, url string, body io.Reader) (*http.Response, error) {
+	println(BaseUrl + url) // TODO Logging stuff.
 	req, err := http.NewRequest(method, BaseUrl+url, body)
 	if err != nil {
 		return nil, err
