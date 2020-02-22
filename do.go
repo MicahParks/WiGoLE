@@ -34,12 +34,12 @@ func Do(builder Builder, method string, response interface{}, apiUrl string, use
 		return err
 	}
 	if bytes.Equal(rBody, errAuthResp) {
-		return errTooMany
+		return ErrTooMany
 	}
 	if err = json.Unmarshal(rBody, response); err != nil {
 		// TODO Check for things like "Basic auth failure".
 		if bytes.Equal(rBody, errTooManyResp) {
-			return errAuth
+			return ErrAuth
 		}
 		return err
 	}
