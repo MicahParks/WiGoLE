@@ -1,16 +1,21 @@
 package detail
 
 import (
-	"encoding/json"
 	"fmt"
-	"io/ioutil"
+	"io"
 
+	"gitlab.com/MicahParks/wigole"
 	"gitlab.com/MicahParks/wigole/user"
 )
 
-var Url = "network/detail?"
+const ApiUrl = "network/detail?"
+const Method = "GET"
 
-func (p *Parameters) BuildUrl() (url string, err error) {
+func (p *Parameters) Body() (io.Reader, error) {
+	return nil, nil
+}
+
+func (p *Parameters) Url() (url string, err error) {
 	// TODO Check to see if any values are legally zero.
 	if len(p.NetId) != 0 {
 		url += fmt.Sprintf("&netId=%s", p.NetId)
@@ -41,23 +46,11 @@ func (p *Parameters) BuildUrl() (url string, err error) {
 }
 
 func (p *Parameters) Do(u *user.User) (*Response, error) {
-	url, err := p.BuildUrl()
-	if err != nil {
+	resp := &Response{}
+	if err := wigole.Do(p, Method, resp, ApiUrl, u); err != nil {
 		return nil, err
 	}
-	resp, err := u.Do("GET", Url+url, nil)
-	if err != nil {
-		return nil, err
-	}
-	body, err := ioutil.ReadAll(resp.Body)
-	if err != nil {
-		return nil, err
-	}
-	r := &Response{}
-	if err = json.Unmarshal(body, r); err != nil {
-		return nil, err
-	}
-	return r, nil
+	return resp, nil
 }
 
 func New() *Parameters {

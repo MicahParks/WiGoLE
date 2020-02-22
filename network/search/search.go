@@ -86,11 +86,10 @@ func (p *Parameters) Url() (url string, err error) {
 	if len(p.SearchAfter) != 0 {
 		url += fmt.Sprintf("&searchAfter=%s", p.SearchAfter)
 	}
-	return
+	return url, nil
 }
 
 func (p *Parameters) Do(u *user.User) (*wigole.Response, error) {
-	// TODO See if this works, then implement it for the others.
 	resp := &wigole.Response{}
 	if err := wigole.Do(p, Method, resp, ApiUrl, u); err != nil {
 		return nil, err
