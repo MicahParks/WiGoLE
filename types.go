@@ -1,20 +1,18 @@
 package wigole
 
 import (
-	"errors"
 	"io"
 	"time"
 
 	"gitlab.com/MicahParks/wigole/network"
 )
 
-var ErrUpdate = errors.New("this wrapper needs to be updated")
-
 type Builder interface {
 	Body() (io.Reader, error)
 	Url() (string, error)
 }
 
+// TODO https://golangbot.com/inheritance/
 type Response struct {
 	Success      bool
 	TotalResults int
