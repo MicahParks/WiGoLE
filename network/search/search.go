@@ -98,7 +98,7 @@ func (p *Parameters) Do(u *user.User) (*wigole.Response, error) {
 }
 
 func New() *Parameters {
-	return &Parameters{
-		MinQoS: 8, // Max of 7. This let's you know it's uninitialized.
-	}
+	params := Parameters{}
+	params.MinQoS = 8 // Max of 7. This let's you know it's uninitialized.
+	return &params
 }

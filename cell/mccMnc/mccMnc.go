@@ -15,14 +15,7 @@ const Method = "GET"
 
 func (a *AllStrings) Convert() (*MccMnc, error) {
 	resp := MccMnc{}
-	resp.Type = a.Type
-	resp.CountryName = a.CountryName
-	resp.CountryCode = a.CountryCode
-	resp.Brand = a.Brand
-	resp.Operator = a.Operator
-	resp.Status = a.Status
-	resp.Bands = a.Bands
-	resp.Notes = a.Notes
+	resp.Mm = a.Mm
 	mcc, err := strconv.Atoi(a.Mcc)
 	if err != nil {
 		return nil, err
