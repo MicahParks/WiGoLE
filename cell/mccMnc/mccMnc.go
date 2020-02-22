@@ -61,11 +61,11 @@ func (p *Parameters) Do(u *user.User) ([]*Response, error) {
 		return nil, err
 	}
 	resp := make([]*Response, 0)
-	if !(len(m) <= 1) {
+	if !(len(m) <= 1) { // TODO This is only the case when MCC is included find a way to fix this for MNC.K
 		return nil, wigole.ErrUpdate
 	}
 	var master string
-	for k := range m { // TODO This is only the case when MCC is included find a way to fix this for MNC.
+	for k := range m {
 		master = k
 	}
 	for k, v := range m[master] {
