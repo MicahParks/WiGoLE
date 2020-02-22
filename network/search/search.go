@@ -3,6 +3,7 @@ package search
 import (
 	"errors"
 	"fmt"
+	"io"
 
 	"gitlab.com/MicahParks/wigole"
 	"gitlab.com/MicahParks/wigole/date"
@@ -14,7 +15,11 @@ const Method = "GET"
 
 var errVariance = errors.New("variance must be between 0.001 and 0.2")
 
-func (p *Parameters) BuildUrl() (url string, err error) {
+func (p *Parameters) Body() (io.Reader, error) {
+	return nil, nil
+}
+
+func (p *Parameters) Url() (url string, err error) {
 	url = fmt.Sprintf("onlymine=%v", p.Onlymine)
 	if p.Notmine {
 		url += fmt.Sprintf("&notmine=%v", p.Notmine)

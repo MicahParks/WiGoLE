@@ -8,19 +8,23 @@ import (
 )
 
 func Do(builder Builder, method string, response interface{}, apiUrl string, user *user.User) error {
-	url, err := builder.BuildUrl()
+	url, err := builder.Url()
 	if err != nil {
 		return err
 	}
-	resp, err := user.Do(method, apiUrl+url, nil)
+	pBody, err := builder.Body()
 	if err != nil {
 		return err
 	}
-	body, err := ioutil.ReadAll(resp.Body)
+	resp, err := user.Do(method, apiUrl+url, pBody)
 	if err != nil {
 		return err
 	}
-	if err = json.Unmarshal(body, response); err != nil {
+	rBody, err := ioutil.ReadAll(resp.Body)
+	if err != nil {
+		return err
+	}
+	if err = json.Unmarshal(rBody, response); err != nil {
 		return err
 	}
 	return nil

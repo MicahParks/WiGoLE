@@ -1,13 +1,15 @@
 package wigole
 
 import (
+	"io"
 	"time"
 
 	"gitlab.com/MicahParks/wigole/network"
 )
 
 type Builder interface {
-	BuildUrl() (string, error)
+	Body() (io.Reader, error)
+	Url() (string, error)
 }
 
 type Response struct {
