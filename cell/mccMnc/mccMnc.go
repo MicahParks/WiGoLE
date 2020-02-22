@@ -13,8 +13,8 @@ import (
 const ApiUrl = "cell/mccMnc?"
 const Method = "GET"
 
-func (a *AllStrings) Convert() (*Response, error) {
-	resp := Response{}
+func (a *AllStrings) Convert() (*MccMnc, error) {
+	resp := MccMnc{}
 	resp.Type = a.Type
 	resp.CountryName = a.CountryName
 	resp.CountryCode = a.CountryCode
@@ -23,11 +23,6 @@ func (a *AllStrings) Convert() (*Response, error) {
 	resp.Status = a.Status
 	resp.Bands = a.Bands
 	resp.Notes = a.Notes
-	key, err := strconv.Atoi(a.Key)
-	if err != nil {
-		return nil, err
-	}
-	resp.Key = key
 	mcc, err := strconv.Atoi(a.Mcc)
 	if err != nil {
 		return nil, err
@@ -55,33 +50,36 @@ func (p *Parameters) Url() (url string, err error) {
 	return url, nil
 }
 
-func (p *Parameters) Do(u *user.User) ([]*Response, error) {
+func (p *Parameters) Do(u *user.User) (map[int][]*MccMnc, error) {
 	m := make(map[string]map[string]map[string]string) // ;_;
 	if err := wigole.Do(p, Method, &m, ApiUrl, u); err != nil {
 		return nil, err
 	}
-	resp := make([]*Response, 0)
-	if !(len(m) <= 1) { // TODO This is only the case when MCC is included find a way to fix this for MNC.K
-		return nil, wigole.ErrUpdate
-	}
+	resp := make(map[int][]*MccMnc, 0)
 	var master string
 	for k := range m {
 		master = k
-	}
-	for k, v := range m[master] {
-		a := AllStrings{Key: k}
-		dat, err := json.Marshal(v)
+		mccMncs := make([]*MccMnc, 0)
+		for _, v := range m[master] {
+			a := AllStrings{}
+			dat, err := json.Marshal(v)
+			if err != nil {
+				return nil, err
+			}
+			if err = json.Unmarshal(dat, &a); err != nil {
+				return nil, err
+			}
+			r, err := a.Convert()
+			if err != nil {
+				return nil, err
+			}
+			mccMncs = append(mccMncs, r)
+		}
+		mcc, err := strconv.Atoi(k)
 		if err != nil {
 			return nil, err
 		}
-		if err = json.Unmarshal(dat, &a); err != nil {
-			return nil, err
-		}
-		r, err := a.Convert()
-		if err != nil {
-			return nil, err
-		}
-		resp = append(resp, r)
+		resp[mcc] = mccMncs
 	}
 	return resp, nil
 }

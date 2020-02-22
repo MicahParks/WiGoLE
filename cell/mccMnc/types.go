@@ -1,12 +1,11 @@
 package mccMnc
 
 type Parameters struct {
-	Mcc uint
-	Mnc uint
+	Mcc int
+	Mnc int
 }
 
 type AllStrings struct { // Let's convert those strings to ints.
-	Key         string
 	Type        string
 	CountryName string
 	CountryCode string
@@ -19,8 +18,7 @@ type AllStrings struct { // Let's convert those strings to ints.
 	Notes       string
 }
 
-type Response struct { // The API should have made the response contain a list, not a nested dict.
-	Key         int
+type MccMnc struct { // The API should have made the response contain a list, not a nested dict.
 	Type        string
 	CountryName string
 	CountryCode string

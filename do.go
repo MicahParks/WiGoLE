@@ -25,6 +25,7 @@ func Do(builder Builder, method string, response interface{}, apiUrl string, use
 		return err
 	}
 	if err = json.Unmarshal(rBody, response); err != nil {
+		// TODO Check for things like "Basic auth failure".
 		return err
 	}
 	return nil
