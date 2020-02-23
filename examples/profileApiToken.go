@@ -16,7 +16,7 @@ type creds struct {
 }
 
 func main() {
-	// Get and print your user info.
+	// Get and print your API info.
 	cred := creds{}
 	c, err := ioutil.ReadFile("creds.json")
 	if err != nil {

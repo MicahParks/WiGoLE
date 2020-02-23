@@ -24,7 +24,7 @@ Under development!
 - [ ] `GET` stats/standings
 - [ ] `GET` stats/user
 - [ ] `GET` group/admin
-- [ ] `GET` groupMembers
+- [ ] `GET` group/groupMembers
 - [x] `GET` profile/apiToken
 - [x] `GET` profile/user
  
