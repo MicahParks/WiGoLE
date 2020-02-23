@@ -7,7 +7,7 @@ Under development!
 ## TO DO
 - [ ] `GET` bluetooth/detail
 - [ ] `GET` bluetooth/search
-- [ ] `GET` cell/mccMnc
+- [x] `GET` cell/mccMnc
 - [ ] `GET` cell/search
 - [ ] `GET` file/kml/{transid}
 - [ ] `GET` file/transactions
