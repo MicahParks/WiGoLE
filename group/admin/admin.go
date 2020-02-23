@@ -1,4 +1,4 @@
-package detail
+package admin
 
 import (
 	"fmt"
@@ -9,8 +9,8 @@ import (
 )
 
 const (
+	ApiUrl = "group/admin?"
 	Method = "GET"
-	ApiUrl = "bluetooth/detail?"
 )
 
 func (p *Parameters) Body() (io.Reader, error) {
@@ -18,11 +18,8 @@ func (p *Parameters) Body() (io.Reader, error) {
 }
 
 func (p *Parameters) Url() (url string, err error) {
-	if len(p.Netid) != 0 {
-		url += fmt.Sprintf("&netid=%s", p.Netid)
-	}
-	if len(p.ReverseAddress) != 0 {
-		url += fmt.Sprintf("&reverseAddress=%s", p.ReverseAddress)
+	if len(p.Groupid) != 0 {
+		url += fmt.Sprintf("&groupid=%s", p.Groupid)
 	}
 	return url, nil
 }

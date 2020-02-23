@@ -23,3 +23,7 @@ type Parameters struct {
 	ShowWcdma bool // Default to true.
 	wigole.Parameters
 }
+
+type Response struct {
+	wigole.Response
+}
