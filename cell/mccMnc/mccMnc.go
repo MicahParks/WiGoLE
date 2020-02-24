@@ -2,8 +2,8 @@ package mccMnc
 
 import (
 	"encoding/json"
-	"fmt"
 	"io"
+	"net/url"
 	"strconv"
 
 	"gitlab.com/MicahParks/wigole"
@@ -33,19 +33,20 @@ func (p *Parameters) Body() (io.Reader, error) {
 	return nil, nil
 }
 
-func (p *Parameters) Url() (url string, err error) {
+func (p *Parameters) Url() (values url.Values, err error) {
+	values = url.Values{}
 	if p.Mcc != 0 {
-		url += fmt.Sprintf("&mcc=%d", p.Mcc)
+		values.Set("mcc", strconv.Itoa(p.Mcc))
 	}
 	if p.Mnc != 0 {
-		url += fmt.Sprintf("&mnc=%d", p.Mnc)
+		values.Set("mnc", strconv.Itoa(p.Mnc))
 	}
-	return url, nil
+	return values, nil
 }
 
 func (p *Parameters) Do(u *user.User) (map[int][]*MccMnc, error) {
 	m := make(map[string]map[string]map[string]string) // ;_;
-	if err := wigole.Do(p, Method, &m, ApiUrl, u); err != nil {
+	if err := wigole.Do(ApiUrl, p, Method, &m, u); err != nil {
 		return nil, err
 	}
 	resp := make(map[int][]*MccMnc, 0)
@@ -79,7 +80,7 @@ func (p *Parameters) Do(u *user.User) (map[int][]*MccMnc, error) {
 
 func (p *Parameters) DoRaw(u *user.User) (map[string]map[string]map[string]string, error) {
 	m := make(map[string]map[string]map[string]string)
-	if err := wigole.Do(p, Method, m, ApiUrl, u); err != nil {
+	if err := wigole.Do(ApiUrl, p, Method, m, u); err != nil {
 		return nil, err
 	}
 	return m, nil

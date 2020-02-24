@@ -16,8 +16,8 @@ var (
 	errTooManyResp = []byte("Basic auth failure")
 )
 
-func Do(builder Builder, method string, response interface{}, apiUrl string, user *user.User) error {
-	url, err := builder.Url()
+func Do(apiPath string, builder Builder, method string, response interface{}, user *user.User) error {
+	values, err := builder.Url()
 	if err != nil {
 		return err
 	}
@@ -25,7 +25,7 @@ func Do(builder Builder, method string, response interface{}, apiUrl string, use
 	if err != nil {
 		return err
 	}
-	resp, err := user.Do(method, apiUrl+url, pBody)
+	resp, err := user.Do(apiPath, pBody, method, values)
 	if err != nil {
 		return err
 	}

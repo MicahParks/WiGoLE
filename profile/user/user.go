@@ -23,7 +23,7 @@ func (p *Parameters) Url() (url.Values, error) {
 
 func (p *Parameters) Do(u *user.User) (*Person, error) {
 	resp := &Person{}
-	if err := wigole.Do(p, Method, resp, ApiUrl, u); err != nil {
+	if err := wigole.Do(ApiUrl, p, Method, resp, u); err != nil {
 		return nil, err
 	}
 	return resp, nil

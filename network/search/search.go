@@ -1,9 +1,9 @@
 package search
 
 import (
-	"fmt"
 	"io"
 	"net/url"
+	"strconv"
 
 	"gitlab.com/MicahParks/wigole"
 	"gitlab.com/MicahParks/wigole/user"
@@ -18,26 +18,26 @@ func (p *Parameters) Body() (io.Reader, error) {
 	return nil, nil
 }
 
-func (p *Parameters) Url() (val url.Values, err error) {
-	url, err = p.ParentUrl()
+func (p *Parameters) Url() (values url.Values, err error) {
+	values, err = p.ParentSearch()
 	if err != nil {
-		return "", err
+		return url.Values{}, err
 	}
 	if len(p.Encryption) != 0 {
 		// It's possible for a user of the API to make their own Encryption type, but we'll allow it.
-		url += fmt.Sprintf("&encryption=%s", p.Encryption)
+		values.Set("encryption", string(p.Encryption))
 	}
-	url += fmt.Sprintf("&freenet=%v", p.Freenet)
-	url += fmt.Sprintf("&paynet=%v", p.Paynet)
+	values.Set("freenet", strconv.FormatBool(p.Freenet))
+	values.Set("paynet", strconv.FormatBool(p.Paynet))
 	if len(p.Netid) != 0 {
-		url += fmt.Sprintf("&netid=%s", p.Netid)
+		values.Set("netid", p.Netid)
 	}
-	return url, nil
+	return values, nil
 }
 
 func (p *Parameters) Do(u *user.User) (*NetSearchResponse, error) {
 	resp := &NetSearchResponse{}
-	if err := wigole.Do(p, Method, resp, ApiUrl, u); err != nil {
+	if err := wigole.Do(ApiUrl, p, Method, resp, u); err != nil {
 		return nil, err
 	}
 	return resp, nil

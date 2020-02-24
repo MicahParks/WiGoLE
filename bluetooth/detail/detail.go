@@ -1,35 +1,36 @@
 package detail
 
 import (
-	"fmt"
 	"io"
+	"net/url"
 
 	"gitlab.com/MicahParks/wigole"
 	"gitlab.com/MicahParks/wigole/user"
 )
 
 const (
-	Method = "GET"
-	ApiUrl = "bluetooth/detail?"
+	Method  = "GET"
+	ApiPath = "bluetooth/detail?"
 )
 
 func (p *Parameters) Body() (io.Reader, error) {
 	return nil, nil
 }
 
-func (p *Parameters) Url() (url string, err error) {
+func (p *Parameters) Url() (values url.Values, err error) {
+	values = url.Values{}
 	if len(p.Netid) != 0 {
-		url += fmt.Sprintf("&netid=%s", p.Netid)
+		values.Set("netid", p.Netid)
 	}
 	if len(p.ReverseAddress) != 0 {
-		url += fmt.Sprintf("&reverseAddress=%s", p.ReverseAddress)
+		values.Set("reverseAddress", p.ReverseAddress)
 	}
-	return url, nil
+	return values, nil
 }
 
 func (p *Parameters) Do(u *user.User) (*WiFiNetworkWithLocation, error) {
 	resp := &WiFiNetworkWithLocation{}
-	if err := wigole.Do(p, Method, resp, ApiUrl, u); err != nil {
+	if err := wigole.Do(ApiPath, p, Method, resp, u); err != nil {
 		return nil, err
 	}
 	return resp, nil

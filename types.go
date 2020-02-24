@@ -10,7 +10,7 @@ import (
 
 type Builder interface {
 	Body() (io.Reader, error)
-	Url() (val url.Values, err error)
+	Url() (values url.Values, err error)
 }
 
 type Parameters struct {

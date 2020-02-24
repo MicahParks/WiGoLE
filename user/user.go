@@ -3,6 +3,7 @@ package user
 import (
 	"io"
 	"net/http"
+	"net/url"
 )
 
 var BaseUrl = "https://api.wigle.net/api/v2/"
@@ -14,13 +15,14 @@ type User struct {
 	Username string
 }
 
-func (u *User) Do(method string, url string, body io.Reader) (*http.Response, error) {
-	println(BaseUrl + url) // TODO Logging stuff.
-	req, err := http.NewRequest(method, BaseUrl+url, body)
+func (u *User) Do(apiPath string, body io.Reader, method string, values url.Values) (*http.Response, error) {
+	println(BaseUrl + apiPath) // TODO Logging stuff.
+	req, err := http.NewRequest(method, BaseUrl+apiPath, body)
 	if err != nil {
 		return nil, err
 	}
 	req.SetBasicAuth(u.Username, u.Password)
+	req.URL.RawQuery = values.Encode()
 	resp, err := u.Client.Do(req)
 	if err != nil {
 		return nil, err

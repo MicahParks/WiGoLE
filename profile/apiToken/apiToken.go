@@ -27,7 +27,7 @@ func (p *Parameters) Url() (val url.Values, err error) {
 
 func (p *Parameters) Do(u *user.User) (*AuthTokenResponse, error) {
 	resp := &AuthTokenResponse{}
-	if err := wigole.Do(p, Method, resp, ApiUrl, u); err != nil {
+	if err := wigole.Do(ApiUrl, p, Method, resp, u); err != nil {
 		return nil, err
 	}
 	return resp, nil

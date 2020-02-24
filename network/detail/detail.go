@@ -1,8 +1,9 @@
 package detail
 
 import (
-	"fmt"
 	"io"
+	"net/url"
+	"strconv"
 
 	"gitlab.com/MicahParks/wigole"
 	"gitlab.com/MicahParks/wigole/user"
@@ -17,39 +18,40 @@ func (p *Parameters) Body() (io.Reader, error) {
 	return nil, nil
 }
 
-func (p *Parameters) Url() (url string, err error) {
+func (p *Parameters) Url() (values url.Values, err error) {
 	// TODO Check to see if any values are legally zero.
+	values = url.Values{}
 	if len(p.NetId) != 0 {
-		url += fmt.Sprintf("&netId=%s", p.NetId)
+		values.Set("netId", p.NetId)
 	}
 	if p.Operator != 0 {
-		url += fmt.Sprintf("&operator=%d", p.Operator)
+		values.Set("operator", strconv.FormatUint(p.Operator, 10))
 	}
 	if p.Lac != 0 {
-		url += fmt.Sprintf("&lac=%d", p.Lac)
+		values.Set("lac", strconv.FormatUint(p.Lac, 10))
 	}
 	if p.Cid != 0 {
-		url += fmt.Sprintf("&cid=%d", p.Cid)
+		values.Set("cid", strconv.FormatUint(p.Cid, 10))
 	}
 	if len(p.Type) != 0 {
 		// It's possible for a user of the API to make their own Network type, but we'll allow it.
-		url += fmt.Sprintf("&type=%s", p.Type)
+		values.Set("type", string(p.Type))
 	}
 	if p.System != 0 {
-		url += fmt.Sprintf("&system=%d", p.System)
+		values.Set("system", strconv.FormatUint(p.System, 10))
 	}
 	if p.Network != 0 {
-		url += fmt.Sprintf("&network=%d", p.Network)
+		values.Set("network", strconv.FormatUint(p.Network, 10))
 	}
 	if p.Basestation != 0 {
-		url += fmt.Sprintf("&basestation=%d", p.Basestation)
+		values.Set("basestation", strconv.FormatUint(p.Basestation, 10))
 	}
-	return url, nil
+	return values, nil
 }
 
 func (p *Parameters) Do(u *user.User) (*WiFiNetworkDetailResponse, error) {
 	resp := &WiFiNetworkDetailResponse{}
-	if err := wigole.Do(p, Method, resp, ApiUrl, u); err != nil {
+	if err := wigole.Do(ApiUrl, p, Method, resp, u); err != nil {
 		return nil, err
 	}
 	return resp, nil
