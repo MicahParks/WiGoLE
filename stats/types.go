@@ -20,3 +20,13 @@ type UserStandings struct {
 	Last                     string
 	Self                     bool
 }
+
+type Region struct {
+	Region string
+	Count  int
+}
+
+type SsidStatistic struct {
+	Name  string
+	value int
+}

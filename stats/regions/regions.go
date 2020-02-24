@@ -1,4 +1,4 @@
-package user
+package regions
 
 import (
 	"io"
@@ -9,7 +9,7 @@ import (
 )
 
 const (
-	ApiPath = "stats/user"
+	ApiPath = "stats/regions"
 	Method  = "GET"
 )
 
@@ -18,11 +18,13 @@ func (p *Parameters) Body() (io.Reader, error) {
 }
 
 func (p *Parameters) Url() (values url.Values, err error) {
-	return url.Values{}, nil
+	values = url.Values{}
+	values.Set("country", p.Country)
+	return values, nil
 }
 
-func (p *Parameters) Do(u *user.User) (*UserStatsResponse, error) {
-	resp := &UserStatsResponse{}
+func (p *Parameters) Do(u *user.User) (*Response, error) {
+	resp := &Response{}
 	if err := wigole.Do(ApiPath, p, Method, resp, u); err != nil {
 		return nil, err
 	}
@@ -30,5 +32,7 @@ func (p *Parameters) Do(u *user.User) (*UserStatsResponse, error) {
 }
 
 func New() *Parameters {
-	return &Parameters{}
+	return &Parameters{
+		Country: "US",
+	}
 }

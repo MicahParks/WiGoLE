@@ -17,7 +17,7 @@ func (p *Parameters) Body() (io.Reader, error) {
 	return nil, nil
 }
 
-func (p *Parameters) Url() (url.Values, error) {
+func (p *Parameters) Url() (values url.Values, err error) {
 	return url.Values{}, nil
 }
 

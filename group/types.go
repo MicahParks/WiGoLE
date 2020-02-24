@@ -2,8 +2,8 @@ package group
 
 type Group struct {
 	GroupId    string
-	Username   string
-	Status     string
+	GroupName  string
+	Owner      string
 	Discovered int
 	Total      int
 	GenDisc    int
