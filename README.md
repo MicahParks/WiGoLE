@@ -12,9 +12,9 @@ Under development!
 - [ ] `GET` file/kml/{transid}
 - [ ] `GET` file/transactions
 - [ ] `POST` file/upload
-- [ ] `POST` network/comment
+- [x] `POST` network/comment
 - [x] `GET` network/detail
-- [ ] `GET` network/geocode
+- [x] `GET` network/geocode
 - [x] `GET` network/search
 - [x] `GET` stats/countries
 - [x] `GET` stats/general
