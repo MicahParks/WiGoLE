@@ -15,7 +15,6 @@ type creds struct {
 }
 
 func main() {
-	// TODO Needs verification that this is working.
 	cred := creds{}
 	c, err := ioutil.ReadFile("creds.json")
 	if err != nil {

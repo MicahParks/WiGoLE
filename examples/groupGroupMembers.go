@@ -16,7 +16,6 @@ type creds struct {
 }
 
 func main() {
-	// TODO Needs verification that this is working.
 	// Get and print group members.
 	cred := creds{}
 	c, err := ioutil.ReadFile("creds.json")

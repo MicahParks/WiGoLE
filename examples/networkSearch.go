@@ -16,7 +16,6 @@ type creds struct {
 
 func main() {
 	// Search for all Wifi networks that have the SSID of "Harambe", print the number of results.
-	// It'll cap out at 100, but you get the idea.
 	cred := creds{}
 	c, err := ioutil.ReadFile("creds.json")
 	if err != nil {

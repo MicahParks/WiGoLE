@@ -10,10 +10,10 @@ import (
 )
 
 var (
-	ErrAuth        = errors.New("basic auth failure")
-	errAuthResp    = []byte(`{"success":false,"message":"too many queries today"}`)
-	ErrTooMany     = errors.New("too many queries today")
-	errTooManyResp = []byte("Basic auth failure")
+	ErrAuth          = errors.New("basic auth failure")
+	errAuthResp      = []byte(`{"success":false,"message":"too many queries today"}`)
+	ErrTooMany       = errors.New("too many queries today")
+	basicAuthFailure = []byte("Basic auth failure")
 )
 
 func Do(apiPath string, builder Builder, method string, response interface{}, user *user.User) error {
@@ -37,8 +37,7 @@ func Do(apiPath string, builder Builder, method string, response interface{}, us
 		return ErrTooMany
 	}
 	if err = json.Unmarshal(rBody, response); err != nil {
-		// TODO Check for things like "Basic auth failure".
-		if bytes.Equal(rBody, errTooManyResp) {
+		if bytes.Equal(rBody, basicAuthFailure) {
 			return ErrAuth
 		}
 		return err
