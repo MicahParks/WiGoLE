@@ -19,6 +19,18 @@ const (
 
 type Encryption string
 
+type GeocodingResponse struct {
+	Address      map[string]string // TODO Is this the same for all of them?`1
+	Lat          float64
+	Lon          float64
+	Importance   float64
+	Place_id     int
+	Licence      string
+	Osm_type     string
+	Display_name string
+	Boundingbox  []float64
+}
+
 type WiFiLocation struct {
 	Alt             int
 	Accuracy        float64
