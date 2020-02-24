@@ -2,6 +2,7 @@ package user
 
 import (
 	"io"
+	"net/url"
 
 	"gitlab.com/MicahParks/wigole"
 	"gitlab.com/MicahParks/wigole/user"
@@ -16,8 +17,8 @@ func (p *Parameters) Body() (io.Reader, error) {
 	return nil, nil
 }
 
-func (p *Parameters) Url() (url string, err error) {
-	return "", nil
+func (p *Parameters) Url() (url.Values, error) {
+	return url.Values{}, nil
 }
 
 func (p *Parameters) Do(u *user.User) (*Person, error) {

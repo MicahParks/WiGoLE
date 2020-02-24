@@ -3,6 +3,7 @@ package search
 import (
 	"fmt"
 	"io"
+	"net/url"
 
 	"gitlab.com/MicahParks/wigole"
 	"gitlab.com/MicahParks/wigole/user"
@@ -17,7 +18,7 @@ func (p *Parameters) Body() (io.Reader, error) {
 	return nil, nil
 }
 
-func (p *Parameters) Url() (url string, err error) {
+func (p *Parameters) Url() (val url.Values, err error) {
 	url, err = p.ParentUrl()
 	if err != nil {
 		return "", err

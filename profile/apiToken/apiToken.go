@@ -1,8 +1,8 @@
 package apiToken
 
 import (
-	"fmt"
 	"io"
+	"net/url"
 
 	"gitlab.com/MicahParks/wigole"
 	"gitlab.com/MicahParks/wigole/user"
@@ -17,11 +17,12 @@ func (p *Parameters) Body() (io.Reader, error) {
 	return nil, nil
 }
 
-func (p *Parameters) Url() (url string, err error) {
+func (p *Parameters) Url() (val url.Values, err error) {
+	val = url.Values{}
 	if len(p.Type) != 0 {
-		url = fmt.Sprintf("&type=%s", p.Type)
+		val.Set("type", string(p.Type))
 	}
-	return url, nil
+	return val, nil
 }
 
 func (p *Parameters) Do(u *user.User) (*AuthTokenResponse, error) {

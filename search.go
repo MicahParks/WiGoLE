@@ -3,13 +3,14 @@ package wigole
 import (
 	"errors"
 	"fmt"
+	"net/url"
 
 	"gitlab.com/MicahParks/wigole/date"
 )
 
 var errVariance = errors.New("variance must be between 0.001 and 0.2")
 
-func (p *Parameters) ParentUrl() (url string, err error) {
+func (p *Parameters) ParentUrl() (val url.Values, err error) {
 	url = fmt.Sprintf("onlymine=%v", p.Onlymine)
 	if p.Notmine {
 		url += fmt.Sprintf("&notmine=%v", p.Notmine)

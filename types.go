@@ -2,6 +2,7 @@ package wigole
 
 import (
 	"io"
+	"net/url"
 	"time"
 
 	"gitlab.com/MicahParks/wigole/network"
@@ -9,7 +10,7 @@ import (
 
 type Builder interface {
 	Body() (io.Reader, error)
-	Url() (string, error)
+	Url() (val url.Values, err error)
 }
 
 type Parameters struct {
