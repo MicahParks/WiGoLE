@@ -13,6 +13,6 @@ type Parameters struct {
 	wigole.Parameters
 }
 
-type Response struct {
+type NetSearchResponse struct {
 	wigole.NetSearchResponse
 }

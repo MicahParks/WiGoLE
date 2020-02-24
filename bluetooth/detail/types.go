@@ -9,6 +9,6 @@ type Parameters struct {
 	ReverseAddress string
 }
 
-type Response struct {
+type WiFiNetworkWithLocation struct {
 	wigole.WiFiNetworkWithLocation
 }

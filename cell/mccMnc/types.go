@@ -4,6 +4,7 @@ type Parameters struct {
 	Mcc int
 	Mnc int
 }
+
 type Mm struct {
 	Type        string
 	CountryName string
