@@ -17,5 +17,5 @@ type UploadResultsResponse struct {
 	TimeTaken string
 	Filesize  int
 	Filename  string
-	Transids  *TransidResponse
+	Transids  []*TransidResponse
 }

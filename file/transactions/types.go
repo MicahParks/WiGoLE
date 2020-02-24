@@ -6,7 +6,7 @@ import (
 
 type TransLogResponse struct {
 	Success              bool
-	Results              *file.TransLog
+	Results              []*file.TransLog
 	ProcessingQueueDepth int
 	GeoQueueDepth        int
 }
