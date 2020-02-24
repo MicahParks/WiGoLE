@@ -22,7 +22,7 @@ type Parameters struct {
 	Operator    uint64
 	Lac         uint64
 	Cid         uint64
-	Type        *network.Network
+	Type        network.Network
 	System      uint64
 	Network     uint64
 	Basestation uint64

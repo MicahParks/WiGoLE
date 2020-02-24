@@ -10,7 +10,7 @@ const (
 )
 
 type Parameters struct {
-	Type *TokenType
+	Type TokenType
 }
 
 type AuthTokenResponse struct {
@@ -20,7 +20,7 @@ type AuthTokenResponse struct {
 
 type AuthToken struct {
 	AuthName string
-	Token    *TokenType
+	Token    TokenType
 	Status   string
 	Type     string
 	PersonId int
