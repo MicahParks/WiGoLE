@@ -10,7 +10,7 @@ import (
 
 const (
 	Method  = "GET"
-	ApiPath = "bluetooth/detail?"
+	ApiPath = "bluetooth/detail"
 )
 
 func (p *Parameters) Body() (io.Reader, error) {

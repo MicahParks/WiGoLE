@@ -9,8 +9,8 @@ import (
 )
 
 const (
-	ApiUrl = "group/admin?"
-	Method = "GET"
+	ApiPath = "group/admin"
+	Method  = "GET"
 )
 
 func (p *Parameters) Body() (io.Reader, error) {
@@ -27,7 +27,7 @@ func (p *Parameters) Url() (values url.Values, err error) {
 
 func (p *Parameters) Do(u *user.User) (*GroupMemberResponse, error) {
 	resp := &GroupMemberResponse{}
-	if err := wigole.Do(ApiUrl, p, Method, resp, u); err != nil {
+	if err := wigole.Do(ApiPath, p, Method, resp, u); err != nil {
 		return nil, err
 	}
 	return resp, nil

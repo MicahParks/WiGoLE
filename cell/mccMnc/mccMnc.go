@@ -10,7 +10,7 @@ import (
 	"gitlab.com/MicahParks/wigole/user"
 )
 
-const ApiUrl = "cell/mccMnc?"
+const ApiPath = "cell/mccMnc"
 const Method = "GET"
 
 func (a *AllStrings) Convert() (*MccMnc, error) {
@@ -46,7 +46,7 @@ func (p *Parameters) Url() (values url.Values, err error) {
 
 func (p *Parameters) Do(u *user.User) (map[int][]*MccMnc, error) {
 	m := make(map[string]map[string]map[string]string) // ;_;
-	if err := wigole.Do(ApiUrl, p, Method, &m, u); err != nil {
+	if err := wigole.Do(ApiPath, p, Method, &m, u); err != nil {
 		return nil, err
 	}
 	resp := make(map[int][]*MccMnc, 0)
@@ -80,7 +80,7 @@ func (p *Parameters) Do(u *user.User) (map[int][]*MccMnc, error) {
 
 func (p *Parameters) DoRaw(u *user.User) (map[string]map[string]map[string]string, error) {
 	m := make(map[string]map[string]map[string]string)
-	if err := wigole.Do(ApiUrl, p, Method, m, u); err != nil {
+	if err := wigole.Do(ApiPath, p, Method, m, u); err != nil {
 		return nil, err
 	}
 	return m, nil

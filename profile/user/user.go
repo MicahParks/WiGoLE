@@ -9,8 +9,8 @@ import (
 )
 
 const (
-	ApiUrl = "profile/user?"
-	Method = "GET"
+	ApiPath = "profile/user"
+	Method  = "GET"
 )
 
 func (p *Parameters) Body() (io.Reader, error) {
@@ -23,7 +23,7 @@ func (p *Parameters) Url() (url.Values, error) {
 
 func (p *Parameters) Do(u *user.User) (*Person, error) {
 	resp := &Person{}
-	if err := wigole.Do(ApiUrl, p, Method, resp, u); err != nil {
+	if err := wigole.Do(ApiPath, p, Method, resp, u); err != nil {
 		return nil, err
 	}
 	return resp, nil

@@ -1,6 +1,6 @@
 package search
 
 const (
-	Method = "GET"
-	ApiUrl = "bluetooth/search?"
+	Method  = "GET"
+	ApiPath = "bluetooth/search"
 )
