@@ -5,8 +5,8 @@ import (
 )
 
 type TransLogResponse struct {
-	success              bool
-	results              *file.TransLog
-	processingQueueDepth int
-	geoQueueDepth        int
+	Success              bool
+	Results              *file.TransLog
+	ProcessingQueueDepth int
+	GeoQueueDepth        int
 }

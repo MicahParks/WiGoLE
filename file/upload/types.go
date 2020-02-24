@@ -1,21 +1,21 @@
 package upload
 
 type TransidResponse struct {
-	file    string
-	size    int
-	transId string
+	File    string
+	Size    int
+	TransId string
 }
 
 type UploadResponse struct {
-	success  bool
-	warning  string
-	results  *UploadResultsResponse
-	observer string
+	Success  bool
+	Warning  string
+	Results  *UploadResultsResponse
+	Observer string
 }
 
 type UploadResultsResponse struct {
-	timeTaken string
-	filesize  int
-	filename  string
-	transids  *TransidResponse
+	TimeTaken string
+	Filesize  int
+	Filename  string
+	Transids  *TransidResponse
 }
