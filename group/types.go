@@ -15,13 +15,13 @@ type Parameters struct {
 	Groupid string
 }
 
-type Response struct {
+type GroupMemberResponse struct {
 	Success bool
 	Group   *Group
-	Users   []*User
+	Users   []*GroupMember
 }
 
-type User struct {
+type GroupMember struct {
 	GroupId        string
 	Username       string
 	Status         string

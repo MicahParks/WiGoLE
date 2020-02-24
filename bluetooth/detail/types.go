@@ -10,5 +10,5 @@ type Parameters struct {
 }
 
 type Response struct {
-	wigole.Result
+	wigole.WiFiNetworkWithLocation
 }

@@ -5,11 +5,11 @@ import (
 	"gitlab.com/MicahParks/wigole/network"
 )
 
-type Address struct {
+type GeocodingResponse struct {
 	Address      map[string]string
 	Lat          float64
 	Lon          float64
-	Importance   int
+	Importance   float64
 	Place_id     int
 	Licence      string
 	Osm_type     string
@@ -28,13 +28,13 @@ type Parameters struct {
 	Basestation uint64
 }
 
-type Response struct {
+type WiFiNetworkDetailResponse struct {
 	Success   bool
 	Cdma      bool
 	Gsm       bool
 	Lte       bool
 	Wcdma     bool
 	Wifi      bool
-	Addresses []Address
-	Results   []wigole.Result
+	Addresses []GeocodingResponse
+	Results   []wigole.WiFiNetworkWithLocation
 }

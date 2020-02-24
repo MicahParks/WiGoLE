@@ -41,5 +41,5 @@ func main() {
 		}
 		panic(err)
 	}
-	println(len(resp.Results))
+	println(len(resp.LocationData))
 }

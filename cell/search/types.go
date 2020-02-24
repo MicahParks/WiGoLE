@@ -25,5 +25,5 @@ type Parameters struct {
 }
 
 type Response struct {
-	wigole.Response
+	wigole.NetSearchResponse
 }

@@ -1,26 +1,31 @@
 package apiToken
 
 const (
-	ANDROID TokenType = "ANDROID"
-	API     TokenType = "API"
-	COMMAPI TokenType = "COMMAPI"
+	ANDROID         TokenType = "ANDROID"
+	API             TokenType = "API"
+	COMMAPI         TokenType = "COMMAPI"
+	COOKIE          TokenType = "COOKIE"
+	STATUS_ACTIVE   Status    = "STATUS_ACTIVE"
+	STATUS_DISABLED Status    = "STATUS_DISABLED"
 )
 
 type Parameters struct {
 	Type TokenType
 }
 
-type Response struct {
+type AuthTokenResponse struct {
 	Success bool
-	Result  []*Result
+	Result  []*AuthToken
 }
 
-type Result struct {
+type AuthToken struct {
 	AuthName string
-	Token    string
+	Token    TokenType
 	Status   string
 	Type     string
 	PersonId int
 }
+
+type Status string
 
 type TokenType string

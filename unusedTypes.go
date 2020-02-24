@@ -1,10 +1,13 @@
-package user
+package wigole
 
 import (
 	"time"
 )
 
-type Parameters struct {
+type NetCommentResponse struct {
+	Success bool
+	Comment string
+	Netid   string
 }
 
 type Person struct {

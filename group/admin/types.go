@@ -8,7 +8,7 @@ type Parameters struct {
 	group.Parameters
 }
 
-type Response struct {
+type GroupResponse struct {
 	Groupid string
-	group.Response
+	group.GroupMemberResponse
 }

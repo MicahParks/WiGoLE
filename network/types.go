@@ -19,8 +19,8 @@ const (
 
 type Encryption string
 
-type LocationData struct {
-	Alt             float64
+type WiFiLocation struct {
+	Alt             int
 	Accuracy        float64
 	Lastupdt        time.Time
 	Latitude        float64
@@ -28,11 +28,11 @@ type LocationData struct {
 	Month           string
 	Ssid            string
 	Time            time.Time
-	Signal          float64
+	Signal          int
 	Name            string
 	NetId           string
 	Noise           float64
-	snr             float64
+	Snr             float64
 	Wep             string
 	Channel         int
 	EncryptionValue string

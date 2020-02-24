@@ -8,6 +8,6 @@ type Parameters struct {
 	group.Parameters
 }
 
-type Response struct {
-	group.Response
+type GroupMemberResponse struct {
+	group.GroupMemberResponse
 }
