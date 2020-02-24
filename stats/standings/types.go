@@ -1,4 +1,4 @@
-package group
+package standings
 
 import (
 	"gitlab.com/MicahParks/wigole/stats"
@@ -23,7 +23,7 @@ type Parameters struct {
 
 type Response struct {
 	Success    bool
-	EventView  string
+	EventView  bool
 	MyUsername string
 	PageStart  int
 	PageEnd    int

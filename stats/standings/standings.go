@@ -1,4 +1,4 @@
-package group
+package standings
 
 import (
 	"io"
@@ -24,7 +24,7 @@ func (p *Parameters) Url() (values url.Values, err error) {
 		values.Set("sort", string(p.Sort))
 	}
 	values.Set("pagestart", strconv.Itoa(p.Pagestart))
-	if p.Pageend >= p.Pagestart {
+	if p.Pageend >= p.Pagestart && p.Pageend != 0 {
 		values.Set("pageend", strconv.Itoa(p.Pageend))
 	}
 	return values, nil
