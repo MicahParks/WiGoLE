@@ -19,7 +19,7 @@ func (p *Parameters) Body() (io.Reader, error) {
 }
 
 func (p *Parameters) Url() (values url.Values, err error) {
-	values, err = p.ParentSearch()
+	values, err = p.ParentSsid()
 	if err != nil {
 		return url.Values{}, err
 	}

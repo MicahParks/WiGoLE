@@ -10,7 +10,7 @@ type Parameters struct {
 	Freenet    bool               // Default to false.
 	Paynet     bool               // Default to false.
 	Netid      string             // BSSID exact match. Need first three octets. Format "0A:2C:EF:3D:25:1B".
-	wigole.Parameters
+	wigole.SearchSsid
 }
 
 type NetSearchResponse struct {

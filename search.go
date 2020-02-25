@@ -10,7 +10,7 @@ import (
 
 var errVariance = errors.New("variance must be between 0.001 and 0.2")
 
-func (p *Parameters) ParentSearch() (values url.Values, err error) {
+func (p *SearchParameters) ParentSearch() (values url.Values, err error) {
 	values = url.Values{}
 	values.Set("onlymine", strconv.FormatBool(p.Onlymine))
 	if p.Notmine {
@@ -32,12 +32,6 @@ func (p *Parameters) ParentSearch() (values url.Values, err error) {
 	}
 	if !p.EndTransID.IsZero() {
 		values.Set("endTransID", strconv.Itoa(p.EndTransID.Year()))
-	}
-	if len(p.Ssid) != 0 {
-		values.Set("ssid", p.Ssid)
-	}
-	if len(p.Ssidlike) != 0 {
-		values.Set("ssidlike", p.Ssidlike)
 	}
 	if p.MinQoS != 8 {
 		values.Set("minQoS", strconv.Itoa(int(p.MinQoS)))
@@ -72,4 +66,18 @@ func (p *Parameters) ParentSearch() (values url.Values, err error) {
 		values.Set("searchAfter", p.SearchAfter)
 	}
 	return values, nil
+}
+
+func (p *SearchSsid) ParentSsid() (values url.Values, err error) {
+	values, err = p.SearchParameters.ParentSearch()
+	if err != nil {
+		return nil, err
+	}
+	if len(p.Ssid) != 0 {
+		values.Set("ssid", p.Ssid)
+	}
+	if len(p.Ssidlike) != 0 {
+		values.Set("ssidlike", p.Ssidlike)
+	}
+	return values, err
 }

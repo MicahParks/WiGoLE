@@ -13,7 +13,18 @@ type Builder interface {
 	Url() (values url.Values, err error)
 }
 
-type Parameters struct {
+type NetSearchResponse struct {
+	Success      bool
+	TotalResults int
+	First        int
+	Last         int
+	ResultCount  int
+	Results      []*WiFiNetworkWithLocation
+	SearchAfter  string
+	Search_after int
+}
+
+type SearchParameters struct {
 	Onlymine       bool // Defaults to false.
 	Notmine        bool
 	Latrange1      float64 // Makes Latrange2 used, even if 0.
@@ -23,8 +34,6 @@ type Parameters struct {
 	Lastupdt       time.Time
 	StartTransID   time.Time // Year level precision only.
 	EndTransID     time.Time // Year level precision only.
-	Ssid           string    // SSID exact match.
-	Ssidlike       string    // SSID with '%' as a wildcard and '_' as any character.
 	MinQoS         uint8     // Between 0-7.
 	Variance       float64   // Between 0.001 and 0.2.
 	HouseNumber    string
@@ -37,15 +46,10 @@ type Parameters struct {
 	SearchAfter    string // What is this?
 }
 
-type NetSearchResponse struct {
-	Success      bool
-	TotalResults int
-	First        int
-	Last         int
-	ResultCount  int
-	Results      []*WiFiNetworkWithLocation
-	SearchAfter  string
-	Search_after int
+type SearchSsid struct {
+	Ssid     string // SSID exact match.
+	Ssidlike string // SSID with '%' as a wildcard and '_' as any character.
+	SearchParameters
 }
 
 type WiFiNetwork struct {

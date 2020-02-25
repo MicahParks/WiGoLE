@@ -21,7 +21,7 @@ type Parameters struct {
 	ShowCdma  bool // Default to true
 	ShowLte   bool // Default to true.
 	ShowWcdma bool // Default to true.
-	wigole.Parameters
+	wigole.SearchSsid
 }
 
 type Response struct {
