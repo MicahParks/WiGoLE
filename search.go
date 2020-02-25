@@ -10,7 +10,7 @@ import (
 
 var errVariance = errors.New("variance must be between 0.001 and 0.2")
 
-func (p *SearchParameters) ParentSearch() (values url.Values, err error) {
+func (p *SearchParameters) SearchUrl() (values url.Values, err error) {
 	values = url.Values{}
 	values.Set("onlymine", strconv.FormatBool(p.Onlymine))
 	if p.Notmine {
@@ -68,8 +68,20 @@ func (p *SearchParameters) ParentSearch() (values url.Values, err error) {
 	return values, nil
 }
 
-func (p *SearchSsid) ParentSsid() (values url.Values, err error) {
-	values, err = p.SearchParameters.ParentSearch()
+func NewSearch() *SearchParameters {
+	return &SearchParameters{
+		MinQoS: 8,
+	}
+}
+
+func NewSsid() *SearchSsid {
+	s := SearchSsid{}
+	s.SearchParameters = *NewSearch()
+	return &s
+}
+
+func (p *SearchSsid) SsidUrl() (values url.Values, err error) {
+	values, err = p.SearchParameters.SearchUrl()
 	if err != nil {
 		return nil, err
 	}

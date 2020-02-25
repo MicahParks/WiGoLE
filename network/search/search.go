@@ -19,7 +19,7 @@ func (p *Parameters) Body() (io.Reader, error) {
 }
 
 func (p *Parameters) Url() (values url.Values, err error) {
-	values, err = p.ParentSsid()
+	values, err = p.SsidUrl()
 	if err != nil {
 		return url.Values{}, err
 	}
@@ -44,7 +44,7 @@ func (p *Parameters) Do(u *user.User) (*NetSearchResponse, error) {
 }
 
 func New() *Parameters {
-	params := Parameters{}
-	params.MinQoS = 8 // Max of 7. This let's you know it's uninitialized.
-	return &params
+	p := Parameters{}
+	p.SearchSsid = *wigole.NewSsid()
+	return &p
 }

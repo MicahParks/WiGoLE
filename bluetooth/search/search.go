@@ -19,7 +19,7 @@ func (p *Parameters) Body() (io.Reader, error) {
 }
 
 func (p *Parameters) Url() (values url.Values, err error) {
-	values, err = p.ParentSearch()
+	values, err = p.SearchUrl()
 	if err != nil {
 		return nil, err
 	}
@@ -50,5 +50,6 @@ func New() *Parameters {
 		ShowBt:  true,
 		ShowBle: true,
 	}
+	p.SearchParameters = *wigole.NewSearch()
 	return &p
 }

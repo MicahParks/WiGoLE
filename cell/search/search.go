@@ -19,7 +19,7 @@ func (p *Parameters) Body() (io.Reader, error) {
 }
 
 func (p *Parameters) Url() (values url.Values, err error) {
-	values, err = p.ParentSsid()
+	values, err = p.SsidUrl()
 	if err != nil {
 		return url.Values{}, err
 	}
@@ -48,10 +48,12 @@ func (p *Parameters) Do(u *user.User) (*Response, error) {
 }
 
 func New() *Parameters {
-	params := Parameters{}
-	params.ShowGsm = true
-	params.ShowCdma = true
-	params.ShowLte = true
-	params.ShowWcdma = true
-	return &params
+	p := Parameters{
+		ShowGsm:   true,
+		ShowCdma:  true,
+		ShowLte:   true,
+		ShowWcdma: true,
+	}
+	p.SearchSsid = *wigole.NewSsid()
+	return &p
 }
