@@ -5,7 +5,7 @@ import (
 	"net/url"
 	"time"
 
-	"gitlab.com/MicahParks/wigole/network"
+	"gitlab.com/MicahParks/wigole/api/network"
 )
 
 type Builder interface {

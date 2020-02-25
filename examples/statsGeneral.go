@@ -5,8 +5,7 @@ import (
 	"io/ioutil"
 
 	"gitlab.com/MicahParks/wigole"
-	"gitlab.com/MicahParks/wigole/stats/general"
-	"gitlab.com/MicahParks/wigole/user"
+	"gitlab.com/MicahParks/wigole/api/stats/general"
 )
 
 type creds struct {
@@ -26,7 +25,7 @@ func main() {
 		println("JSON failure for 'creds.json' file in the working directory.")
 		return
 	}
-	u := user.New(cred.Password, cred.Username)
+	u := wigole.New(cred.Password, cred.Username)
 	g := general.New()
 	resp, err := g.Do(u)
 	if err != nil {

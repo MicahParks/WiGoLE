@@ -5,8 +5,6 @@ import (
 	"encoding/json"
 	"errors"
 	"io/ioutil"
-
-	"gitlab.com/MicahParks/wigole/user"
 )
 
 var (
@@ -16,7 +14,7 @@ var (
 	basicAuthFailure = []byte("Basic auth failure")
 )
 
-func Do(apiPath string, builder Builder, method string, response interface{}, user *user.User) error {
+func Do(apiPath string, builder Builder, method string, response interface{}, user *User) error {
 	values, err := builder.Url()
 	if err != nil {
 		return err

@@ -4,8 +4,6 @@ import (
 	"errors"
 	"net/url"
 	"strconv"
-
-	"gitlab.com/MicahParks/wigole/date"
 )
 
 var errVariance = errors.New("variance must be between 0.001 and 0.2")
@@ -25,7 +23,7 @@ func (p *SearchParameters) SearchUrl() (values url.Values, err error) {
 		values.Set("longrange2", strconv.FormatFloat(p.Longrange2, 'f', -1, 64))
 	}
 	if !p.Lastupdt.IsZero() {
-		values.Set("lastupdt", date.String(p.Lastupdt))
+		values.Set("lastupdt", String(p.Lastupdt))
 	}
 	if !p.StartTransID.IsZero() {
 		values.Set("startTransID", strconv.Itoa(p.StartTransID.Year()))

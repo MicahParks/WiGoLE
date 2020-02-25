@@ -6,8 +6,7 @@ import (
 	"io/ioutil"
 
 	"gitlab.com/MicahParks/wigole"
-	"gitlab.com/MicahParks/wigole/group/groupMembers"
-	"gitlab.com/MicahParks/wigole/user"
+	"gitlab.com/MicahParks/wigole/api/group/groupMembers"
 )
 
 type creds struct {
@@ -27,7 +26,7 @@ func main() {
 		println("JSON failure for 'creds.json' file in the working directory.")
 		return
 	}
-	u := user.New(cred.Password, cred.Username)
+	u := wigole.New(cred.Password, cred.Username)
 	gM := groupMembers.New()
 	gM.Groupid = "I DON'T KNOW ANY GROUP ID"
 	resp, err := gM.Do(u)
