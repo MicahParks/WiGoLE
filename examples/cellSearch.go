@@ -24,7 +24,7 @@ func main() {
 		println("JSON failure for 'creds.json' file in the working directory.")
 		return
 	}
-	u := wigole.New(cred.Password, cred.Username)
+	u := wigole.NewUser(cred.Password, cred.Username)
 	s := search.New()
 	s.Cell_op = "1915"
 	s.Latrange1 = 37.0078

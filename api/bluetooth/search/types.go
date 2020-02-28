@@ -13,5 +13,12 @@ type Parameters struct {
 	wigole.SearchParameters
 }
 
+type Bluetooth struct { // The description in the docs is wrong.
+	Device       int
+	Capabilities []string
+	LocationData []*wigole.Location
+	wigole.Network
+}
+
 type Response struct {
 }

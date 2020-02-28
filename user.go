@@ -30,7 +30,7 @@ func (u *User) Do(apiPath string, body io.Reader, method string, values url.Valu
 	return resp, nil
 }
 
-func New(password string, username string) *User {
+func NewUser(password string, username string) *User {
 	return &User{
 		BaseUrl:  BaseUrl,
 		Client:   http.Client{},

@@ -26,7 +26,7 @@ func main() {
 		println("JSON failure for 'creds.json' file in the working directory.")
 		return
 	}
-	u := wigole.New(cred.Password, cred.Username)
+	u := wigole.NewUser(cred.Password, cred.Username)
 	a := admin.New()
 	a.Groupid = "I DON'T KNOW ANY GROUP ID"
 	resp, err := a.Do(u)

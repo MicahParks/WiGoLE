@@ -2,11 +2,10 @@ package main
 
 import (
 	"encoding/json"
-	"fmt"
 	"io/ioutil"
 
 	"gitlab.com/MicahParks/wigole"
-	"gitlab.com/MicahParks/wigole/api/group/groupMembers"
+	"gitlab.com/MicahParks/wigole/api/bluetooth/search"
 )
 
 type creds struct {
@@ -15,7 +14,7 @@ type creds struct {
 }
 
 func main() {
-	// Get and print group members.
+	// DESCRIBE WHAT'S HAPPENING HERE.
 	cred := creds{}
 	c, err := ioutil.ReadFile("creds.json")
 	if err != nil {
@@ -27,9 +26,9 @@ func main() {
 		return
 	}
 	u := wigole.NewUser(cred.Password, cred.Username)
-	gM := groupMembers.New()
-	gM.Groupid = "I DON'T KNOW ANY GROUP ID"
-	resp, err := gM.Do(u)
+	s := search.New()
+	s.Namelike = "%ony%"
+	resp, err := s.Do(u)
 	if err != nil {
 		if err == wigole.ErrTooMany {
 			println("Too many queries of that type for today.")
@@ -41,5 +40,5 @@ func main() {
 		}
 		panic(err)
 	}
-	fmt.Printf("%+v\n", *resp)
+	println(resp)
 }

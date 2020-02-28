@@ -24,9 +24,9 @@ func main() {
 		println("JSON failure for 'creds.json' file in the working directory.")
 		return
 	}
-	u := wigole.New(cred.Password, cred.Username)
+	u := wigole.NewUser(cred.Password, cred.Username)
 	d := detail.New()
-	d.Netid = "SOMETHING"
+	d.Netid = "SOME BSSID"
 	resp, err := d.Do(u)
 	if err != nil {
 		if err == wigole.ErrTooMany {

@@ -4,13 +4,30 @@ import (
 	"io"
 	"net/url"
 	"time"
-
-	"gitlab.com/MicahParks/wigole/api/network"
 )
 
 type Builder interface {
 	Body() (io.Reader, error)
 	Url() (values url.Values, err error)
+}
+
+type Location struct {
+	Alt             int
+	Accuracy        float64
+	Lastupdt        time.Time
+	Latitude        float64
+	Longitude       float64
+	Month           string
+	Ssid            string
+	Time            time.Time
+	Signal          int
+	Name            string
+	NetId           string
+	Noise           float64
+	Snr             float64
+	Wep             string
+	Channel         int
+	EncryptionValue string
 }
 
 type NetSearchResponse struct {
@@ -22,6 +39,27 @@ type NetSearchResponse struct {
 	Results      []*WiFiNetworkWithLocation
 	SearchAfter  string
 	Search_after int
+}
+
+type Network struct {
+	Trilat      float64
+	Trilong     float64
+	Ssid        string
+	Qos         int
+	Transid     string
+	Firsttime   time.Time
+	Lasttime    time.Time
+	Lastupdt    time.Time
+	Netid       string
+	Type        string
+	Name        string
+	Userfound   bool
+	Country     string
+	Region      string
+	City        string
+	Housenumber string
+	Road        string
+	Postalcode  string
 }
 
 type SearchParameters struct {
@@ -53,35 +91,18 @@ type SearchSsid struct {
 }
 
 type WiFiNetwork struct {
-	Trilat      float64
-	Trilong     float64
-	Ssid        string
-	Qos         int
-	Transid     string
-	Firsttime   time.Time
-	Lasttime    time.Time
-	Lastupdt    time.Time
-	Netid       string
-	Name        string
-	Type        string
 	Comment     string
 	Wep         string
 	Bcninterval int
 	Freenet     string
 	Dhcp        string
 	Paynet      string
-	Userfound   bool
 	Channel     int
 	Encryption  string
-	Country     string
-	Region      string
-	City        string
-	Housenumber string
-	Road        string
-	Postalcode  string
+	Network
 }
 
 type WiFiNetworkWithLocation struct {
-	LocationData []*network.WiFiLocation
+	LocationData []*Location
 	WiFiNetwork
 }
