@@ -38,7 +38,9 @@ func Do(apiPath string, builder Builder, method string, response interface{}, us
 	}
 	errResp := &ErrResponse{}
 	if err = json.Unmarshal(rBody, errResp); err == nil {
-		return fmt.Errorf("%w\nmessage: %s", ErrFail, errResp.Message)
+		if !errResp.Success {
+			return fmt.Errorf("%w\nmessage: %s", ErrFail, errResp.Message)
+		}
 	}
 	if err = json.Unmarshal(rBody, response); err != nil {
 		if bytes.Equal(rBody, basicAuthFailure) {
