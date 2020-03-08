@@ -2,6 +2,7 @@ package main
 
 import (
 	"encoding/json"
+	"errors"
 	"fmt"
 	"io/ioutil"
 
@@ -31,9 +32,8 @@ func main() {
 	gM.Groupid = "I DON'T KNOW ANY GROUP ID"
 	resp, err := gM.Do(u)
 	if err != nil {
-		if err == wigole.ErrTooMany {
-			println("Too many queries of that type for today.")
-			return
+		if errors.Is(err, wigole.ErrFail) {
+			println(err.Error())
 		}
 		if err == wigole.ErrAuth {
 			println("Failed to authenticate with creds.json.")

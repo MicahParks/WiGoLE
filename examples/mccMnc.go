@@ -2,6 +2,7 @@ package main
 
 import (
 	"encoding/json"
+	"errors"
 	"io/ioutil"
 
 	"gitlab.com/MicahParks/wigole"
@@ -31,9 +32,8 @@ func main() {
 	m.Mnc = 110
 	resp, err := m.Do(u)
 	if err != nil {
-		if err == wigole.ErrTooMany {
-			println("Too many queries of that type for today.")
-			return
+		if errors.Is(err, wigole.ErrFail) {
+			println(err.Error())
 		}
 		if err == wigole.ErrAuth {
 			println("Failed to authenticate with creds.json.")

@@ -11,6 +11,11 @@ type Builder interface {
 	Url() (values url.Values, err error)
 }
 
+type ErrResponse struct {
+	Success bool
+	Message string
+}
+
 type Location struct {
 	Alt             int
 	Accuracy        float64

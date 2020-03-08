@@ -2,6 +2,7 @@ package main
 
 import (
 	"encoding/json"
+	"errors"
 	"io/ioutil"
 
 	"gitlab.com/MicahParks/wigole"
@@ -26,11 +27,11 @@ func main() {
 	}
 	u := wigole.NewUser(cred.Password, cred.Username)
 	d := detail.New()
-	d.Netid = "SOME BSSID"
+	d.Netid = "CornHub"
 	resp, err := d.Do(u)
 	if err != nil {
-		if err == wigole.ErrTooMany {
-			println("Too many queries of that type for today.")
+		if errors.Is(err, wigole.ErrFail) {
+			println(err.Error())
 			return
 		}
 		if err == wigole.ErrAuth {
