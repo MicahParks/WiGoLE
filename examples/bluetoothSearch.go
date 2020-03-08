@@ -33,6 +33,7 @@ func main() {
 	if err != nil {
 		if errors.Is(err, wigole.ErrFail) {
 			println(err.Error())
+			return
 		}
 		if err == wigole.ErrAuth {
 			println("Failed to authenticate with creds.json.")
