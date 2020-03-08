@@ -16,9 +16,16 @@ type Parameters struct {
 type Bluetooth struct { // The description in the docs is wrong.
 	Device       int
 	Capabilities []string
-	LocationData []*wigole.Location
 	wigole.Network
 }
 
 type Response struct {
+	Success      bool
+	TotalResults int
+	First        int
+	Last         int
+	ResultCount  int
+	Results      []*Bluetooth
+	SearchAfter  string
+	Search_after int
 }
