@@ -4,11 +4,23 @@ import (
 	"io"
 	"net/url"
 	"time"
+
+	"gitlab.com/MicahParks/wigole/api/network"
 )
 
 type Builder interface {
 	Body() (io.Reader, error)
 	Url() (values url.Values, err error)
+}
+
+type Detail struct {
+	Success   bool
+	Cdma      bool
+	Gsm       bool
+	Lte       bool
+	Wcdma     bool
+	Wifi      bool
+	Addresses []*network.GeocodingResponse
 }
 
 type ErrResponse struct {

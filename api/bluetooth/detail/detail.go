@@ -27,8 +27,8 @@ func (p *Parameters) Url() (values url.Values, err error) {
 	return values, nil
 }
 
-func (p *Parameters) Do(u *wigole.User) (*WiFiNetworkWithLocation, error) {
-	resp := &WiFiNetworkWithLocation{}
+func (p *Parameters) Do(u *wigole.User) (*Response, error) {
+	resp := &Response{}
 	if err := wigole.Do(ApiPath, p, Method, resp, u); err != nil {
 		return nil, err
 	}

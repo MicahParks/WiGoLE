@@ -17,12 +17,6 @@ type Parameters struct {
 }
 
 type WiFiNetworkDetailResponse struct {
-	Success   bool
-	Cdma      bool
-	Gsm       bool
-	Lte       bool
-	Wcdma     bool
-	Wifi      bool
-	Addresses []*network.GeocodingResponse
-	Results   []*wigole.WiFiNetworkWithLocation
+	Results []*wigole.WiFiNetworkWithLocation
+	wigole.Detail
 }

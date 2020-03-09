@@ -2,6 +2,7 @@ package detail
 
 import (
 	"gitlab.com/MicahParks/wigole"
+	"gitlab.com/MicahParks/wigole/api/bluetooth"
 )
 
 type Parameters struct {
@@ -9,6 +10,7 @@ type Parameters struct {
 	ReverseAddress string
 }
 
-type WiFiNetworkWithLocation struct {
-	wigole.WiFiNetworkWithLocation
+type Response struct {
+	wigole.Detail
+	Results []*bluetooth.Bluetooth
 }

@@ -15,7 +15,7 @@ type creds struct {
 }
 
 func main() {
-	// DESCRIBE WHAT'S HAPPENING HERE.
+	// Find all Bluetooth device with the name like %Sony%.
 	cred := creds{}
 	c, err := ioutil.ReadFile("creds.json")
 	if err != nil {
@@ -28,7 +28,7 @@ func main() {
 	}
 	u := wigole.NewUser(cred.Password, cred.Username)
 	s := search.New()
-	s.Namelike = "%ony%"
+	s.Namelike = "%Sony%"
 	resp, err := s.Do(u)
 	if err != nil {
 		if errors.Is(err, wigole.ErrFail) {
@@ -41,5 +41,5 @@ func main() {
 		}
 		panic(err)
 	}
-	println(resp)
+	println(resp.Results[0].Name)
 }

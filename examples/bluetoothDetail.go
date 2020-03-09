@@ -15,6 +15,7 @@ type creds struct {
 }
 
 func main() {
+	// Search for a specific Netid that will result in the Ssid of "SONY".
 	cred := creds{}
 	c, err := ioutil.ReadFile("creds.json")
 	if err != nil {
@@ -27,7 +28,7 @@ func main() {
 	}
 	u := wigole.NewUser(cred.Password, cred.Username)
 	d := detail.New()
-	d.Netid = "CornHub"
+	d.Netid = "00:03:19:8c:b3:bf"
 	resp, err := d.Do(u)
 	if err != nil {
 		if errors.Is(err, wigole.ErrFail) {
@@ -40,5 +41,5 @@ func main() {
 		}
 		panic(err)
 	}
-	println(len(resp.LocationData))
+	println(resp.Results[0].Ssid)
 }

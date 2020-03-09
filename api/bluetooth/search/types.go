@@ -2,6 +2,7 @@ package search
 
 import (
 	"gitlab.com/MicahParks/wigole"
+	"gitlab.com/MicahParks/wigole/api/bluetooth"
 )
 
 type Parameters struct {
@@ -13,19 +14,13 @@ type Parameters struct {
 	wigole.SearchParameters
 }
 
-type Bluetooth struct { // The description in the docs is wrong.
-	Device       int
-	Capabilities []string
-	wigole.Network
-}
-
 type Response struct {
 	Success      bool
 	TotalResults int
 	First        int
 	Last         int
 	ResultCount  int
-	Results      []*Bluetooth
+	Results      []*bluetooth.Bluetooth
 	SearchAfter  string
 	Search_after int
 }
