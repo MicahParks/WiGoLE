@@ -11,9 +11,8 @@ import (
 var (
 	ErrAuth          = errors.New("basic auth failure")
 	ErrFail          = errors.New("failed API call")
-	ErrTooMany       = errors.New("too many queries today")
+	ErrTooMany       = fmt.Errorf("%w\nmessage: too many queries today", ErrFail)
 	basicAuthFailure = []byte("Basic auth failure")
-	tooManyQueries   = []byte(`{"success":false,"message":"too many queries today"}`)
 )
 
 func Do(apiPath string, builder Builder, method string, response interface{}, user *User) error {
@@ -33,13 +32,13 @@ func Do(apiPath string, builder Builder, method string, response interface{}, us
 	if err != nil {
 		return err
 	}
-	if bytes.Equal(rBody, tooManyQueries) {
-		return ErrTooMany
-	}
-	errResp := &ErrResponse{}
-	if err = json.Unmarshal(rBody, errResp); err == nil {
-		if !errResp.Success {
-			return fmt.Errorf("%w\nmessage: %s", ErrFail, errResp.Message)
+	failResp := &FailResp{}
+	if err = json.Unmarshal(rBody, failResp); err == nil {
+		if !failResp.Success {
+			if failResp.Message == ErrTooMany.Error() {
+				return ErrTooMany
+			}
+			return fmt.Errorf("%w\nmessage: %s", ErrFail, failResp.Message)
 		}
 	}
 	if err = json.Unmarshal(rBody, response); err != nil {

@@ -23,7 +23,7 @@ type Detail struct {
 	Addresses []*network.GeocodingResponse
 }
 
-type ErrResponse struct {
+type FailResp struct {
 	Success bool
 	Message string
 }
