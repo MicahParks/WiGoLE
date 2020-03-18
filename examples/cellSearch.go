@@ -27,7 +27,6 @@ func main() {
 	}
 	u := wigole.NewUser(cred.Password, cred.Username)
 	s := search.New()
-	s.Cell_op = "1915"
 	s.Latrange1 = 37.0078
 	s.Latrange2 = 38.0348
 	s.Longrange1 = -122.6535
@@ -44,5 +43,5 @@ func main() {
 		}
 		panic(err)
 	}
-	println(resp.Results[0].Netid)
+	println(resp.Results[0].Postalcode)
 }

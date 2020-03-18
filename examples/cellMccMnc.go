@@ -15,8 +15,7 @@ type creds struct {
 }
 
 func main() {
-	// Search for all Wifi networks that have the SSID of "Harambe", print the number of results.
-	// It'll cap out at 100, but you get the idea.
+	// Query for MCC 310 and print the first result's MNC.
 	cred := creds{}
 	c, err := ioutil.ReadFile("creds.json")
 	if err != nil {
@@ -29,7 +28,7 @@ func main() {
 	}
 	u := wigole.NewUser(cred.Password, cred.Username)
 	m := mccMnc.New()
-	m.Mnc = 110
+	m.Mcc = 310
 	resp, err := m.Do(u)
 	if err != nil {
 		if errors.Is(err, wigole.ErrFail) {
@@ -42,10 +41,5 @@ func main() {
 		}
 		panic(err)
 	}
-	for k, v := range resp {
-		if len(v) != 0 {
-			println(k)
-			return
-		}
-	}
+	println(resp[m.Mcc][0].Mnc)
 }

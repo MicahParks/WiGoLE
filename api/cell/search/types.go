@@ -25,5 +25,12 @@ type Parameters struct {
 }
 
 type Response struct {
-	wigole.NetSearchResponse
+	Success      bool
+	TotalResults int
+	First        int
+	Last         int
+	ResultCount  int
+	Results      []*wigole.Network
+	SearchAfter  string
+	Search_after int
 }

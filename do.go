@@ -34,7 +34,7 @@ func Do(apiPath string, builder Builder, method string, response interface{}, us
 	}
 	failResp := &FailResp{}
 	if err = json.Unmarshal(rBody, failResp); err == nil {
-		if !failResp.Success {
+		if !failResp.Success && len(failResp.Message) != 0 {
 			if failResp.Message == ErrTooMany.Error() {
 				return ErrTooMany
 			}
