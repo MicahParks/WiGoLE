@@ -18,7 +18,7 @@ var (
 
 // Do wraps building the URL, building the request body, doing the request, and parsing and unmarshaling the response.
 // Returns any errors.
-func Do(apiPath string, b builder, method string, response interface{}, user *User) error {
+func Do(apiPath string, b Builder, method string, response interface{}, user *User) error {
 	values, err := b.Url()
 	if err != nil {
 		return err

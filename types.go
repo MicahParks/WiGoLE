@@ -8,7 +8,8 @@ import (
 	"gitlab.com/MicahParks/wigole/api/network"
 )
 
-type builder interface {
+// Builder is the interface that creates the request URL and request body.
+type Builder interface {
 	Body() (io.Reader, error)
 	Url() (values url.Values, err error)
 }

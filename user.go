@@ -6,7 +6,7 @@ import (
 	"net/url"
 )
 
-// BaseUrl is the base URL for the WiGLE API. All requests will be built on this string.
+// BaseUrl is the base URL for the WiGLE API. All request URLs will be built on this string.
 var BaseUrl = "https://api.wigle.net/api/v2/"
 
 // User stores API credentials. It is then used to preform requests.
