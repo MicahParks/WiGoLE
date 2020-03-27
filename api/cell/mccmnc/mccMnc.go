@@ -9,8 +9,12 @@ import (
 	"gitlab.com/MicahParks/wigole"
 )
 
-const ApiPath = "cell/mccMnc"
-const Method = "GET"
+const (
+	// ApiPath is the path relative to the BaseUrl to make the API call.
+	ApiPath = "cell/mccMnc"
+	// Method is the HTTP method to use when doing an API call.
+	Method = "GET"
+)
 
 // Convert changes numeric values of strings to integers as the expected data type.
 func (a *allStrings) Convert() (*MccMnc, error) {

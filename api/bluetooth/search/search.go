@@ -9,8 +9,10 @@ import (
 )
 
 const (
+	// ApiPath is the path relative to the BaseUrl to make the API call.
 	ApiPath = "bluetooth/search"
-	Method  = "GET"
+	// Method is the HTTP method to use when doing an API call.
+	Method = "GET"
 )
 
 // Body builds the request body reader for an API call to bluetooth/search.
