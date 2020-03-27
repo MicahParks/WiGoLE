@@ -5,6 +5,9 @@ GoLang wrapper for v2 [WiGLE API](https://api.wigle.net/swagger#/Network_search_
 Under development!
 
 ## TO DO
+* Change struct values to golint friendly. Use struct tags to unmarshal properly.
+
+## TO DO API
 - [x] `GET` bluetooth/detail
 - [x] `GET` bluetooth/search
 - [x] `GET` cell/mccMnc
