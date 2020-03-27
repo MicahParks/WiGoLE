@@ -1,3 +1,4 @@
+// Package wigole is the wrapper for the WiGLE API.
 package wigole
 
 import (
@@ -15,12 +16,14 @@ var (
 	basicAuthFailure = []byte("Basic auth failure")
 )
 
-func Do(apiPath string, builder Builder, method string, response interface{}, user *User) error {
-	values, err := builder.Url()
+// Do wraps building the URL, building the request body, doing the request, and parsing and unmarshaling the response.
+// Returns any errors.
+func Do(apiPath string, b builder, method string, response interface{}, user *User) error {
+	values, err := b.Url()
 	if err != nil {
 		return err
 	}
-	pBody, err := builder.Body()
+	pBody, err := b.Body()
 	if err != nil {
 		return err
 	}
@@ -32,7 +35,7 @@ func Do(apiPath string, builder Builder, method string, response interface{}, us
 	if err != nil {
 		return err
 	}
-	failResp := &FailResp{}
+	failResp := &failResp{}
 	if err = json.Unmarshal(rBody, failResp); err == nil {
 		if !failResp.Success && len(failResp.Message) != 0 {
 			if failResp.Message == ErrTooMany.Error() {

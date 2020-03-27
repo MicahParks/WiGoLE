@@ -8,11 +8,12 @@ import (
 	"gitlab.com/MicahParks/wigole/api/network"
 )
 
-type Builder interface {
+type builder interface {
 	Body() (io.Reader, error)
 	Url() (values url.Values, err error)
 }
 
+// Detail is used to deserialize information returned from the WiGLE API. Used for inheritance.
 type Detail struct {
 	Success   bool
 	Cdma      bool
@@ -23,12 +24,14 @@ type Detail struct {
 	Addresses []*network.GeocodingResponse
 }
 
-type FailResp struct {
+type failResp struct {
 	Success bool
 	Message string
 }
 
-type Location struct {
+// WiFiLocation is used to deserialize information returned from the WiGLE API. Used for inheritance.
+// Look at "Models" at the bottom of https://api.wigle.net/swagger
+type WiFiLocation struct {
 	Alt             int
 	Accuracy        float64
 	Lastupdt        time.Time
@@ -47,6 +50,8 @@ type Location struct {
 	EncryptionValue string
 }
 
+// NetSearchResponse is used to deserialize information returned from the WiGLE API. Used for inheritance.
+// Look at "Models" at the bottom of https://api.wigle.net/swagger
 type NetSearchResponse struct {
 	Success      bool
 	TotalResults int
@@ -58,6 +63,7 @@ type NetSearchResponse struct {
 	Search_after int
 }
 
+// Network is used to deserialize information returned from the WiGLE API. Used for inheritance.
 type Network struct {
 	Trilat      float64
 	Trilong     float64
@@ -79,6 +85,7 @@ type Network struct {
 	Postalcode  string
 }
 
+// SearchParameters is used to deserialize information returned from the WiGLE API. Used for inheritance.
 type SearchParameters struct {
 	Onlymine       bool // Defaults to false.
 	Notmine        bool
@@ -101,12 +108,14 @@ type SearchParameters struct {
 	SearchAfter    string // What is this?
 }
 
+// SearchSsid is used to deserialize information returned from the WiGLE API. Used for inheritance.
 type SearchSsid struct {
 	Ssid     string // SSID exact match.
 	Ssidlike string // SSID with '%' as a wildcard and '_' as any character.
 	SearchParameters
 }
 
+// WiFiNetwork is used to deserialize information returned from the WiGLE API. Used for inheritance.
 type WiFiNetwork struct {
 	Comment     string
 	Wep         string
@@ -119,7 +128,9 @@ type WiFiNetwork struct {
 	Network
 }
 
+// WiFiNetworkWithLocation is used to deserialize information returned from the WiGLE API. Used for inheritance.
+// Look at "Models" at the bottom of https://api.wigle.net/swagger
 type WiFiNetworkWithLocation struct {
-	LocationData []*Location
+	LocationData []*WiFiLocation
 	WiFiNetwork
 }

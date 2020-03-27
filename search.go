@@ -8,6 +8,8 @@ import (
 
 var errVariance = errors.New("variance must be between 0.001 and 0.2")
 
+// SearchUrl uses the SearchParameters current state to build url.Values
+// Returns any errors.
 func (p *SearchParameters) SearchUrl() (values url.Values, err error) {
 	values = url.Values{}
 	values.Set("onlymine", strconv.FormatBool(p.Onlymine))
@@ -66,18 +68,22 @@ func (p *SearchParameters) SearchUrl() (values url.Values, err error) {
 	return values, nil
 }
 
+// NewSearch initializes a general search parameters.
 func NewSearch() *SearchParameters {
 	return &SearchParameters{
 		MinQoS: 8,
 	}
 }
 
+// NewSsid initializes a general SSID search.
 func NewSsid() *SearchSsid {
 	s := SearchSsid{}
 	s.SearchParameters = *NewSearch()
 	return &s
 }
 
+// SsidUrl uses the SearchSsid current state to build url.Values
+// Returns any errors.
 func (p *SearchSsid) SsidUrl() (values url.Values, err error) {
 	values, err = p.SearchParameters.SearchUrl()
 	if err != nil {
