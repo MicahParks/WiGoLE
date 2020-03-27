@@ -5,6 +5,7 @@ import (
 	"gitlab.com/MicahParks/wigole/api/bluetooth"
 )
 
+// Parameters holds all information that can be used for an API call to bluetooth/search.
 type Parameters struct {
 	Netid    string
 	Name     string
@@ -14,6 +15,7 @@ type Parameters struct {
 	wigole.SearchParameters
 }
 
+// Response is the response from an API call for bluetooth/search.
 type Response struct {
 	Success      bool
 	TotalResults int
