@@ -4,6 +4,7 @@ import (
 	"gitlab.com/MicahParks/wigole"
 )
 
+// Cell includes all the WiGLE defined Cell constants for making API calls to cell/search.
 type Cell string
 
 const (
@@ -13,6 +14,7 @@ const (
 	CDMA  Cell = "CDMA"
 )
 
+// Parameters holds all information that can be used for an API call to cell/search.
 type Parameters struct {
 	Cell_op   Cell
 	Cell_net  Cell
@@ -24,6 +26,7 @@ type Parameters struct {
 	wigole.SearchSsid
 }
 
+// Response is the response from an API call for cell/search.
 type Response struct {
 	Success      bool
 	TotalResults int

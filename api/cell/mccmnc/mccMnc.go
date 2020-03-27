@@ -12,7 +12,8 @@ import (
 const ApiPath = "cell/mccMnc"
 const Method = "GET"
 
-func (a *AllStrings) Convert() (*MccMnc, error) {
+// Convert changes numeric values of strings to integers as the expected data type.
+func (a *allStrings) Convert() (*MccMnc, error) {
 	resp := MccMnc{}
 	resp.Mm = a.Mm
 	mcc, err := strconv.Atoi(a.Mcc)
@@ -28,10 +29,12 @@ func (a *AllStrings) Convert() (*MccMnc, error) {
 	return &resp, nil
 }
 
+// Body builds the request body reader for an API call to cell/mmcmnc.
 func (p *Parameters) Body() (io.Reader, error) {
 	return nil, nil
 }
 
+// Url builds the URL values for an API call to cell/mmcmnc.
 func (p *Parameters) Url() (values url.Values, err error) {
 	values = url.Values{}
 	if p.Mcc != 0 {
@@ -43,6 +46,7 @@ func (p *Parameters) Url() (values url.Values, err error) {
 	return values, nil
 }
 
+// Do wraps the API call for cell/mmcmnc.
 func (p *Parameters) Do(u *wigole.User) (map[int][]*MccMnc, error) {
 	m := make(map[string]map[string]map[string]string) // ;_;
 	if err := wigole.Do(ApiPath, p, Method, &m, u); err != nil {
@@ -54,7 +58,7 @@ func (p *Parameters) Do(u *wigole.User) (map[int][]*MccMnc, error) {
 		master = k
 		mccMncs := make([]*MccMnc, 0)
 		for _, v := range m[master] {
-			a := AllStrings{}
+			a := allStrings{}
 			dat, err := json.Marshal(v)
 			if err != nil {
 				return nil, err
@@ -77,6 +81,7 @@ func (p *Parameters) Do(u *wigole.User) (map[int][]*MccMnc, error) {
 	return resp, nil
 }
 
+// DoRaw wraps the API call for cell/mmcmnc but returns the raw response's map of strings.
 func (p *Parameters) DoRaw(u *wigole.User) (map[string]map[string]map[string]string, error) {
 	m := make(map[string]map[string]map[string]string)
 	if err := wigole.Do(ApiPath, p, Method, m, u); err != nil {
@@ -85,6 +90,7 @@ func (p *Parameters) DoRaw(u *wigole.User) (map[string]map[string]map[string]str
 	return m, nil
 }
 
+// New initializes and returns a pointer to parameters that can be used to make an API call to cell/mmcmnc.
 func New() *Parameters {
 	return &Parameters{}
 }
