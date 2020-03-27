@@ -26,14 +26,14 @@ func (p *Parameters) Url() (values url.Values, err error) {
 	if err != nil {
 		return url.Values{}, err
 	}
-	if len(p.Cell_op) != 0 {
-		values.Set("cell_op", string(p.Cell_op))
+	if len(p.CellOp) != 0 {
+		values.Set("cell_op", string(p.CellOp))
 	}
-	if len(p.Cell_net) != 0 {
-		values.Set("cell_net", string(p.Cell_net))
+	if len(p.CellNet) != 0 {
+		values.Set("cell_net", string(p.CellNet))
 	}
-	if len(p.Cell_id) != 0 {
-		values.Set("cell_id", string(p.Cell_id))
+	if len(p.CellId) != 0 {
+		values.Set("cell_id", string(p.CellId))
 	}
 	values.Set("showGsm", strconv.FormatBool(p.ShowGsm))
 	values.Set("showCdma", strconv.FormatBool(p.ShowCdma))

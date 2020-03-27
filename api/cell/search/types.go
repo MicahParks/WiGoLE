@@ -20,9 +20,9 @@ type Cell string
 
 // Parameters holds all information that can be used for an API call to cell/search.
 type Parameters struct {
-	Cell_op   Cell
-	Cell_net  Cell
-	Cell_id   Cell
+	CellOp    Cell `json:"cell_op"`
+	CellNet   Cell `json:"cell_net"`
+	CellId    Cell `json:"cell_id"`
 	ShowGsm   bool // Default to true.
 	ShowCdma  bool // Default to true
 	ShowLte   bool // Default to true.
@@ -32,12 +32,12 @@ type Parameters struct {
 
 // Response is the response from an API call for cell/search.
 type Response struct {
-	Success      bool
-	TotalResults int
-	First        int
-	Last         int
-	ResultCount  int
-	Results      []*wigole.Network
-	SearchAfter  string
-	Search_after int
+	Success               bool
+	TotalResults          int
+	First                 int
+	Last                  int
+	ResultCount           int
+	Results               []*wigole.Network
+	SearchAfter           string
+	SearchAfterDeprecated int `json:"search_after"`
 }

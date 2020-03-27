@@ -28,15 +28,15 @@ type Encryption string
 
 // GeocodingResponse is used to deserialize information returned from the WiGLE API. Used for inheritance.
 type GeocodingResponse struct {
-	Address      map[string]string // TODO Is this the same for all of them?
-	Lat          float64
-	Lon          float64
-	Importance   float64
-	Place_id     int
-	Licence      string
-	Osm_type     string
-	Display_name string
-	Boundingbox  []float64
+	Address     map[string]string // TODO Is this the same for all of them?
+	Lat         float64
+	Lon         float64
+	Importance  float64
+	PlaceId     int `json:"place_id"`
+	Licence     string
+	OsmType     string    `json:"osm_type"`
+	DisplayName string    `json:"display_name"`
+	BoundingBox []float64 `json:"boundingbox"`
 }
 
 // Network includes all the WiGLE defined network constants for making API calls to network/*.

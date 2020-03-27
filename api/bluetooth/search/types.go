@@ -17,12 +17,12 @@ type Parameters struct {
 
 // Response is the response from an API call for bluetooth/search.
 type Response struct {
-	Success      bool
-	TotalResults int
-	First        int
-	Last         int
-	ResultCount  int
-	Results      []*bluetooth.Bluetooth
-	SearchAfter  string
-	Search_after int
+	Success               bool
+	TotalResults          int
+	First                 int
+	Last                  int
+	ResultCount           int
+	Results               []*bluetooth.Bluetooth
+	SearchAfter           string
+	SearchAfterDeprecated int `json:"search_after"`
 }

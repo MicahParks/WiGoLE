@@ -41,5 +41,5 @@ func main() {
 		}
 		panic(err)
 	}
-	println(resp.Results[0].Display_name, resp.Results[0].Place_id)
+	println(resp.Results[0].DisplayName, resp.Results[0].PlaceId)
 }

@@ -54,14 +54,14 @@ type WiFiLocation struct {
 // NetSearchResponse is used to deserialize information returned from the WiGLE API. Used for inheritance.
 // Look at "Models" at the bottom of https://api.wigle.net/swagger
 type NetSearchResponse struct {
-	Success      bool
-	TotalResults int
-	First        int
-	Last         int
-	ResultCount  int
-	Results      []*WiFiNetworkWithLocation
-	SearchAfter  string
-	Search_after int
+	Success               bool
+	TotalResults          int
+	First                 int
+	Last                  int
+	ResultCount           int
+	Results               []*WiFiNetworkWithLocation
+	SearchAfter           string
+	SearchAfterDeprecated int `json:"search_after"`
 }
 
 // Network is used to deserialize information returned from the WiGLE API. Used for inheritance.
