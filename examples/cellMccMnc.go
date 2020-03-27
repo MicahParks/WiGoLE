@@ -6,7 +6,7 @@ import (
 	"io/ioutil"
 
 	"gitlab.com/MicahParks/wigole"
-	"gitlab.com/MicahParks/wigole/api/cell/mccMnc"
+	"gitlab.com/MicahParks/wigole/api/cell/mccmnc"
 )
 
 type creds struct {
@@ -27,7 +27,7 @@ func main() {
 		return
 	}
 	u := wigole.NewUser(cred.ApiName, cred.ApiToken)
-	m := mccMnc.New()
+	m := mccmnc.New()
 	m.Mcc = 310
 	resp, err := m.Do(u)
 	if err != nil {

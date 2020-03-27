@@ -1,4 +1,4 @@
-package mccMnc
+package mccmnc
 
 import (
 	"encoding/json"

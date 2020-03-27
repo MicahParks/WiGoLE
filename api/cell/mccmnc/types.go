@@ -1,4 +1,4 @@
-package mccMnc
+package mccmnc
 
 type Parameters struct {
 	Mcc int
