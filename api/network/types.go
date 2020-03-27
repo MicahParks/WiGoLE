@@ -1,16 +1,26 @@
 package network
 
 const (
-	None    Encryption = "None"
-	WEP     Encryption = "WEP"
-	WPA     Encryption = "WPA"
-	WPA2    Encryption = "WPA2"
-	WPA3    Encryption = "WPA3"
+	// None is a encryption constant defined by WiGLE.
+	None Encryption = "None"
+	// Wep is a encryption constant defined by WiGLE.
+	Wep Encryption = "WEP"
+	// Wpa is a encryption constant defined by WiGLE.
+	Wpa Encryption = "WPA"
+	// Wpa2 is a encryption constant defined by WiGLE.
+	Wpa2 Encryption = "WPA2"
+	// Wpa3 is a encryption constant defined by WiGLE.
+	Wpa3 Encryption = "WPA3"
+	// Unknown is a encryption constant defined by WiGLE.
 	Unknown Encryption = "Unknown"
-	CDMA    Network    = "CDMA"
-	GSM     Network    = "GSM"
-	LTE     Network    = "LTE"
-	WIFI    Network    = "WIFI"
+	// Cdma is a network constant defined by WiGLE.
+	Cdma Network = "CDMA"
+	// Gsm is a network constant defined by WiGLE.
+	Gsm Network = "GSM"
+	// Lte is a network constant defined by WiGLE.
+	Lte Network = "LTE"
+	// Wifi is a network constant defined by WiGLE.
+	Wifi Network = "WIFI"
 )
 
 // Encryption includes all the WiGLE defined encryption constants for making API calls to network/*.

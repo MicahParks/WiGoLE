@@ -29,7 +29,7 @@ func main() {
 	}
 	u := wigole.NewUser(cred.ApiName, cred.ApiToken)
 	aT := apitoken.New()
-	aT.Type = apitoken.API
+	aT.Type = apitoken.Api
 	resp, err := aT.Do(u)
 	if err != nil {
 		if errors.Is(err, wigole.ErrFail) {
