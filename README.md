@@ -8,7 +8,7 @@ Under development!
 - [x] `GET` bluetooth/detail
 - [x] `GET` bluetooth/search
 - [x] `GET` cell/mccMnc
-- [ ] `GET` cell/search
+- [x] `GET` cell/search
 - [ ] `GET` file/kml/{transid}
 - [ ] `GET` file/transactions
 - [ ] `POST` file/upload

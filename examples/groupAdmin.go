@@ -11,8 +11,8 @@ import (
 )
 
 type creds struct {
-	Password string
-	Username string
+	ApiName  string
+	ApiToken string
 }
 
 func main() {
@@ -27,7 +27,7 @@ func main() {
 		println("JSON failure for 'creds.json' file in the working directory.")
 		return
 	}
-	u := wigole.NewUser(cred.Password, cred.Username)
+	u := wigole.NewUser(cred.ApiName, cred.ApiToken)
 	a := admin.New()
 	a.Groupid = "I DON'T KNOW ANY GROUP ID"
 	resp, err := a.Do(u)
