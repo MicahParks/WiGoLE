@@ -12,6 +12,7 @@ type Group struct {
 	GroupOwner bool
 }
 
+// Parameters is a generalized parameter holder for API calls in group/*.
 type Parameters struct {
 	Groupid string
 }

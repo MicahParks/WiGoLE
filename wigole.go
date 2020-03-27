@@ -10,8 +10,11 @@ import (
 )
 
 var (
-	ErrAuth          = errors.New("basic auth failure")
-	ErrFail          = errors.New("failed API call")
+	// ErrAuth indicates the API call failed because of an HTTP authentication failure.
+	ErrAuth = errors.New("basic auth failure")
+	// ErrFail indicates the API call failed.
+	ErrFail = errors.New("failed API call")
+	// ErrTooMany indicates the API call failed because rate limiting.
 	ErrTooMany       = fmt.Errorf("%w\nmessage: too many queries today", ErrFail)
 	basicAuthFailure = []byte("Basic auth failure")
 )
