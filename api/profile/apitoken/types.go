@@ -1,4 +1,4 @@
-package apiToken
+package apitoken
 
 const (
 	ANDROID         TokenType = "ANDROID"

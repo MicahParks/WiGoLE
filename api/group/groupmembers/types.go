@@ -1,4 +1,4 @@
-package groupMembers
+package groupmembers
 
 import (
 	"gitlab.com/MicahParks/wigole/api/group"

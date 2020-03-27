@@ -1,4 +1,4 @@
-package groupMembers
+package apitoken
 
 import (
 	"io"
@@ -8,7 +8,7 @@ import (
 )
 
 const (
-	ApiPath = "group/admin"
+	ApiPath = "profile/apiToken"
 	Method  = "GET"
 )
 
@@ -16,16 +16,16 @@ func (p *Parameters) Body() (io.Reader, error) {
 	return nil, nil
 }
 
-func (p *Parameters) Url() (values url.Values, err error) {
-	values = url.Values{}
-	if len(p.Groupid) != 0 {
-		values.Set("groupid", p.Groupid)
+func (p *Parameters) Url() (val url.Values, err error) {
+	val = url.Values{}
+	if len(p.Type) != 0 {
+		val.Set("type", string(p.Type))
 	}
-	return values, nil
+	return val, nil
 }
 
-func (p *Parameters) Do(u *wigole.User) (*GroupMemberResponse, error) {
-	resp := &GroupMemberResponse{}
+func (p *Parameters) Do(u *wigole.User) (*AuthTokenResponse, error) {
+	resp := &AuthTokenResponse{}
 	if err := wigole.Do(ApiPath, p, Method, resp, u); err != nil {
 		return nil, err
 	}

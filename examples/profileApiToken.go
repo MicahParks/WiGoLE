@@ -7,7 +7,7 @@ import (
 	"io/ioutil"
 
 	"gitlab.com/MicahParks/wigole"
-	"gitlab.com/MicahParks/wigole/api/profile/apiToken"
+	"gitlab.com/MicahParks/wigole/api/profile/apitoken"
 )
 
 type creds struct {
@@ -28,8 +28,8 @@ func main() {
 		return
 	}
 	u := wigole.NewUser(cred.ApiName, cred.ApiToken)
-	aT := apiToken.New()
-	aT.Type = apiToken.API
+	aT := apitoken.New()
+	aT.Type = apitoken.API
 	resp, err := aT.Do(u)
 	if err != nil {
 		if errors.Is(err, wigole.ErrFail) {

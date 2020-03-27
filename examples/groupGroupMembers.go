@@ -7,7 +7,7 @@ import (
 	"io/ioutil"
 
 	"gitlab.com/MicahParks/wigole"
-	"gitlab.com/MicahParks/wigole/api/group/groupMembers"
+	"gitlab.com/MicahParks/wigole/api/group/groupmembers"
 )
 
 type creds struct {
@@ -28,7 +28,7 @@ func main() {
 		return
 	}
 	u := wigole.NewUser(cred.ApiName, cred.ApiToken)
-	gM := groupMembers.New()
+	gM := groupmembers.New()
 	gM.Groupid = "I DON'T KNOW ANY GROUP ID"
 	resp, err := gM.Do(u)
 	if err != nil {
