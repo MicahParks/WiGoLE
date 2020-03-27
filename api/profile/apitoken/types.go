@@ -1,12 +1,12 @@
 package apitoken
 
 const (
-	ANDROID         TokenType = "ANDROID"
-	API             TokenType = "API"
-	COMMAPI         TokenType = "COMMAPI"
-	COOKIE          TokenType = "COOKIE"
-	STATUS_ACTIVE   Status    = "STATUS_ACTIVE"
-	STATUS_DISABLED Status    = "STATUS_DISABLED"
+	ANDROID         TokenType = "ANDROID"         // Defined by WiGLE.
+	API             TokenType = "API"             // Defined by WiGLE.
+	COMMAPI         TokenType = "COMMAPI"         // Defined by WiGLE.
+	COOKIE          TokenType = "COOKIE"          // Defined by WiGLE.
+	STATUS_ACTIVE   Status    = "STATUS_ACTIVE"   // Defined by WiGLE.
+	STATUS_DISABLED Status    = "STATUS_DISABLED" // Defined by WiGLE.
 )
 
 type Parameters struct {

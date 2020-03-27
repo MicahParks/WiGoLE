@@ -5,10 +5,10 @@ import (
 )
 
 const (
-	GSM   Cell = "GSM"
-	LTE   Cell = "LTE"
-	WCDMA Cell = "WCDMA"
-	CDMA  Cell = "CDMA"
+	GSM   Cell = "GSM"   // Defined by WiGLE.
+	LTE   Cell = "LTE"   // Defined by WiGLE.
+	WCDMA Cell = "WCDMA" // Defined by WiGLE.
+	CDMA  Cell = "CDMA"  // Defined by WiGLE.
 )
 
 // Cell includes all the WiGLE defined cell constants for making API calls to cell/search.

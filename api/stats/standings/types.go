@@ -5,14 +5,14 @@ import (
 )
 
 const (
-	Discovered     Sort = "discovered"
-	Total          Sort = "total"
-	Monthcount     Sort = "monthcount"
-	Prevmonthcount Sort = "prevmonthcount"
-	Gendisc        Sort = "gendisc"
-	Gentotal       Sort = "gentotal"
-	Firsttransid   Sort = "firsttransid"
-	Lasttransid    Sort = "lasttransid"
+	Discovered     Sort = "discovered"     // Defined by WiGLE.
+	Total          Sort = "total"          // Defined by WiGLE.
+	Monthcount     Sort = "monthcount"     // Defined by WiGLE.
+	Prevmonthcount Sort = "prevmonthcount" // Defined by WiGLE.
+	Gendisc        Sort = "gendisc"        // Defined by WiGLE.
+	Gentotal       Sort = "gentotal"       // Defined by WiGLE.
+	Firsttransid   Sort = "firsttransid"   // Defined by WiGLE.
+	Lasttransid    Sort = "lasttransid"    // Defined by WiGLE.
 )
 
 // Parameters holds all information that can be used for an API call to stats/standings.
