@@ -11,8 +11,8 @@ var BaseUrl = "https://api.wigle.net/api/v2/"
 type User struct {
 	BaseUrl  string
 	Client   http.Client
-	Password string
-	Username string
+	ApiName  string
+	ApiToken string
 }
 
 func (u *User) Do(apiPath string, body io.Reader, method string, values url.Values) (*http.Response, error) {
@@ -21,7 +21,7 @@ func (u *User) Do(apiPath string, body io.Reader, method string, values url.Valu
 	if err != nil {
 		return nil, err
 	}
-	req.SetBasicAuth(u.Username, u.Password)
+	req.SetBasicAuth(u.ApiName, u.ApiToken)
 	req.URL.RawQuery = values.Encode()
 	resp, err := u.Client.Do(req)
 	if err != nil {
@@ -34,7 +34,7 @@ func NewUser(apiName string, apiToken string) *User {
 	return &User{
 		BaseUrl:  BaseUrl,
 		Client:   http.Client{},
-		Password: apiToken,
-		Username: apiName,
+		ApiName:  apiName,
+		ApiToken: apiToken,
 	}
 }
