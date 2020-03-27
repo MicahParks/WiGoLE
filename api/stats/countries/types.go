@@ -1,6 +1,6 @@
 package countries
 
-// country holds the country information for an API call to stats/countries.
+// country holds the country information for an API response from stats/countries.
 type country struct {
 	Country string
 	Count   int

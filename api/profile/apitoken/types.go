@@ -15,15 +15,19 @@ const (
 	StatusDisabled Status = "STATUS_DISABLED"
 )
 
+// Parameters holds all information that can be used for an API call to profile/apitoken.
 type Parameters struct {
 	Type TokenType
 }
 
-type AuthTokenResponse struct {
+// Response is the response from an API call for profile/apitoken.
+type Response struct {
 	Success bool
 	Result  []*AuthToken
 }
 
+// AuthToken holds the authentication token information for an API response from profile/apitoken.
+// Look at "Models" at the bottom of https://api.wigle.net/swagger
 type AuthToken struct {
 	AuthName string
 	Token    TokenType
@@ -32,6 +36,8 @@ type AuthToken struct {
 	PersonId int
 }
 
+// Status includes all the WiGLE defined status constants for making API calls to profile/apitoken.
 type Status string
 
+// TokenType includes all the WiGLE defined token types for making API calls to profile/apitoken.
 type TokenType string

@@ -29,8 +29,8 @@ func (p *Parameters) Url() (val url.Values, err error) {
 }
 
 // Do wraps the API call for profile/apitoken.
-func (p *Parameters) Do(u *wigole.User) (*AuthTokenResponse, error) {
-	resp := &AuthTokenResponse{}
+func (p *Parameters) Do(u *wigole.User) (*Response, error) {
+	resp := &Response{}
 	if err := wigole.Do(ApiPath, p, Method, resp, u); err != nil {
 		return nil, err
 	}
