@@ -13,10 +13,12 @@ const (
 	Method  = "GET"
 )
 
+// Body builds the request body reader for an API call to network/search.
 func (p *Parameters) Body() (io.Reader, error) {
 	return nil, nil
 }
 
+// Url builds the URL values for an API call to network/search.
 func (p *Parameters) Url() (values url.Values, err error) {
 	values, err = p.SsidUrl()
 	if err != nil {
@@ -34,14 +36,16 @@ func (p *Parameters) Url() (values url.Values, err error) {
 	return values, nil
 }
 
-func (p *Parameters) Do(u *wigole.User) (*NetSearchResponse, error) {
-	resp := &NetSearchResponse{}
+// Do wraps the API call for network/search.
+func (p *Parameters) Do(u *wigole.User) (*Response, error) {
+	resp := &Response{}
 	if err := wigole.Do(ApiPath, p, Method, resp, u); err != nil {
 		return nil, err
 	}
 	return resp, nil
 }
 
+// New initializes and returns a pointer to parameters that can be used to make an API call to network/search.
 func New() *Parameters {
 	p := Parameters{}
 	p.SearchSsid = *wigole.NewSsid()

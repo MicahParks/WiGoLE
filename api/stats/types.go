@@ -1,5 +1,6 @@
 package stats
 
+// UserStandings is used to deserialize information returned from the WiGLE API. Used for inheritance.
 type UserStandings struct {
 	Rank                     int
 	MonthRank                int
@@ -21,11 +22,13 @@ type UserStandings struct {
 	Self                     bool
 }
 
+// Region is used to deserialize information returned from the WiGLE API. Used for inheritance.
 type Region struct {
 	Region string
 	Count  int
 }
 
+// SsidStatistic is used to deserialize information returned from the WiGLE API. Used for inheritance.
 type SsidStatistic struct {
 	Name  string
 	value int

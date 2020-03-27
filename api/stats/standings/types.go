@@ -15,12 +15,14 @@ const (
 	Lasttransid    Sort = "lasttransid"
 )
 
+// Parameters holds all information that can be used for an API call to stats/standings.
 type Parameters struct {
 	Sort      Sort
 	Pagestart int
 	Pageend   int
 }
 
+// Response is the response from an API call for stats/standings.
 type Response struct {
 	Success    bool
 	EventView  bool
@@ -32,4 +34,5 @@ type Response struct {
 	SortBy     string
 }
 
+// Sort includes all the WiGLE defined sorting constants for making API calls to stats/standings.
 type Sort string

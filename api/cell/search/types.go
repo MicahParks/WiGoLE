@@ -4,15 +4,15 @@ import (
 	"gitlab.com/MicahParks/wigole"
 )
 
-// Cell includes all the WiGLE defined Cell constants for making API calls to cell/search.
-type Cell string
-
 const (
 	GSM   Cell = "GSM"
 	LTE   Cell = "LTE"
 	WCDMA Cell = "WCDMA"
 	CDMA  Cell = "CDMA"
 )
+
+// Cell includes all the WiGLE defined cell constants for making API calls to cell/search.
+type Cell string
 
 // Parameters holds all information that can be used for an API call to cell/search.
 type Parameters struct {

@@ -5,6 +5,7 @@ import (
 	"gitlab.com/MicahParks/wigole/api/network"
 )
 
+// Parameters holds all information that can be used for an API call to network/detail.
 type Parameters struct {
 	NetId       string
 	Operator    uint64
@@ -16,7 +17,8 @@ type Parameters struct {
 	Basestation uint64
 }
 
-type WiFiNetworkDetailResponse struct {
+// Response is the response from an API call for network/detail.
+type Response struct {
 	Results []*wigole.WiFiNetworkWithLocation
 	wigole.Detail
 }

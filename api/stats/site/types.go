@@ -1,8 +1,10 @@
 package site
 
+// Parameters holds all information that can be used for an API call to stats/site.
 type Parameters struct {
 }
 
+// Response is the response from an API call for stats/site.
 type Response struct {
 	GeoQueue    int
 	Netwpa2     int

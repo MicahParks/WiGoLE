@@ -5,6 +5,7 @@ import (
 	"gitlab.com/MicahParks/wigole/api/network"
 )
 
+// Parameters holds all information that can be used for an API call to network/search.
 type Parameters struct {
 	Encryption network.Encryption // "None", "WEP", "WPA", "WPA2", "WPA3", "Unknown". Case insensitive.
 	Freenet    bool               // Default to false.
@@ -13,6 +14,7 @@ type Parameters struct {
 	wigole.SearchSsid
 }
 
-type NetSearchResponse struct {
+// Response is the response from an API call for network/search.
+type Response struct {
 	wigole.NetSearchResponse
 }

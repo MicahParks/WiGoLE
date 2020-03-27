@@ -4,9 +4,11 @@ import (
 	"gitlab.com/MicahParks/wigole/api/stats"
 )
 
+// Parameters holds all information that can be used for an API call to stats/general.
 type Parameters struct {
 }
 
+// Response is the response from an API call for stats/general.
 type Response struct {
 	Octet          bool
 	Netwpa2        int
