@@ -28,7 +28,7 @@ func main() {
 	}
 	u := wigole.NewUser(cred.Password, cred.Username)
 	s := search.New()
-	s.Ssid = "Linksys09867"
+	s.Ssid = "Harambe"
 	resp, err := s.Do(u)
 	if err != nil {
 		if errors.Is(err, wigole.ErrFail) {
