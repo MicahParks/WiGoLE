@@ -4,7 +4,7 @@
 GoLang wrapper for v2 [WiGLE API](https://api.wigle.net/swagger).
 
 ## TO DO
-* Get guidance on how to implement file*
+* Get guidance on how to implement file/*
 * Add an anonymous user so that API calls can be performed without login (most require login).
 * Add examples and more documentation.
 
