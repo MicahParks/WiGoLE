@@ -3,12 +3,12 @@
 
 GoLang wrapper for v2 [WiGLE API](https://api.wigle.net/swagger).
 
-Under development!
-
 ## TO DO
-* Change struct values to golint friendly. Use struct tags to unmarshal properly.
+* Get guidance on how to implement file*
+* Add an anonymous user so that API calls can be performed without login (most require login).
+* Add examples and more documentation.
 
-## TO DO API
+## Implementation coverage
 - [x] `GET` bluetooth/detail
 - [x] `GET` bluetooth/search
 - [x] `GET` cell/mccMnc
