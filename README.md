@@ -67,6 +67,11 @@ use.
 6. Handle any errors.
 7. Use the API call's response.
 
+## Contributing
+If you'd like to contribute to the project? Have a feature request? Feel free to create an issue or submit a pull
+request!
+
+
 ## TO DO
 * Get guidance on how to implement `api/file/*`
 * Add an anonymous user so that API calls can be performed without login (most require login).
