@@ -68,8 +68,8 @@ use.
 7. Use the API call's response.
 
 ## Contributing
-If you'd like to contribute to the project? Have a feature request? Feel free to create an issue or submit a pull
-request!
+If you'd like to contribute to the project? Have a feature request? Want some more documentation? Feel free to create an
+issue or submit a pull request!
 
 
 ## TO DO
