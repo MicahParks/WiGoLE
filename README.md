@@ -1,7 +1,7 @@
 [![GoDoc](https://godoc.org/gitlab.com/MicahParks/wigole?status.svg)](https://godoc.org/gitlab.com/MicahParks/wigole) [![Go Report Card](https://goreportcard.com/badge/gitlab.com/MicahParks/wigole)](https://goreportcard.com/report/gitlab.com/MicahParks/wigole) [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
 # WiGoLE
 
-GoLang wrapper for v2 [WiGLE API](https://api.wigle.net/swagger).
+GoLang wrapper for v2 WiGLE API. Reference the API directly [here](https://api.wigle.net/swagger).
 
 # Learn
 Check out the `examples` directory for examples of all implemented API calls. To test out the examples, create a
