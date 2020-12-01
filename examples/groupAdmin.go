@@ -6,8 +6,8 @@ import (
 	"fmt"
 	"io/ioutil"
 
-	"gitlab.com/MicahParks/wigole"
-	"gitlab.com/MicahParks/wigole/api/group/admin"
+	"github.com/MicahParks/wigole"
+	"github.com/MicahParks/wigole/api/group/admin"
 )
 
 type creds struct {

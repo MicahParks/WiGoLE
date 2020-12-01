@@ -1,7 +1,7 @@
 package search
 
 import (
-	"gitlab.com/MicahParks/wigole"
+	"github.com/MicahParks/wigole"
 )
 
 const (

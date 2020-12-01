@@ -1,7 +1,7 @@
 package admin
 
 import (
-	"gitlab.com/MicahParks/wigole/api/group"
+	"github.com/MicahParks/wigole/api/group"
 )
 
 // Parameters holds all information that can be used for an API call to group/admin.

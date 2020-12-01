@@ -1,7 +1,7 @@
 package geocode
 
 import (
-	"gitlab.com/MicahParks/wigole/api/network"
+	"github.com/MicahParks/wigole/api/network"
 )
 
 // Parameters holds all information that can be used for an API call to network/geocode.

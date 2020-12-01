@@ -1,7 +1,7 @@
 package bluetooth
 
 import (
-	"gitlab.com/MicahParks/wigole"
+	"github.com/MicahParks/wigole"
 )
 
 // Bluetooth is used to deserialize information returned from the WiGLE API. Used for inheritance.

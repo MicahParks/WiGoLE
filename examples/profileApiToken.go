@@ -6,8 +6,8 @@ import (
 	"fmt"
 	"io/ioutil"
 
-	"gitlab.com/MicahParks/wigole"
-	"gitlab.com/MicahParks/wigole/api/profile/apitoken"
+	"github.com/MicahParks/wigole"
+	"github.com/MicahParks/wigole/api/profile/apitoken"
 )
 
 type creds struct {

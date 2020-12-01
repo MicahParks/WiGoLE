@@ -1,7 +1,7 @@
 package user
 
 import (
-	"gitlab.com/MicahParks/wigole/api/stats"
+	"github.com/MicahParks/wigole/api/stats"
 )
 
 // Parameters holds all information that can be used for an API call to stats/user.

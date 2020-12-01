@@ -1,7 +1,7 @@
 package standings
 
 import (
-	"gitlab.com/MicahParks/wigole/api/stats"
+	"github.com/MicahParks/wigole/api/stats"
 )
 
 const (

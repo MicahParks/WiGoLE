@@ -5,8 +5,8 @@ import (
 	"errors"
 	"io/ioutil"
 
-	"gitlab.com/MicahParks/wigole"
-	"gitlab.com/MicahParks/wigole/api/stats/group"
+	"github.com/MicahParks/wigole"
+	"github.com/MicahParks/wigole/api/stats/group"
 )
 
 type creds struct {

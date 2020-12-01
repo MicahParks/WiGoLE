@@ -5,7 +5,7 @@ import (
 	"net/url"
 	"time"
 
-	"gitlab.com/MicahParks/wigole/api/network"
+	"github.com/MicahParks/wigole/api/network"
 )
 
 // Builder is the interface that creates the request URL and request body.

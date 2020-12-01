@@ -4,7 +4,7 @@ import (
 	"io"
 	"net/url"
 
-	"gitlab.com/MicahParks/wigole"
+	"github.com/MicahParks/wigole"
 )
 
 const (

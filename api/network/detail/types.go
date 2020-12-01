@@ -1,8 +1,8 @@
 package detail
 
 import (
-	"gitlab.com/MicahParks/wigole"
-	"gitlab.com/MicahParks/wigole/api/network"
+	"github.com/MicahParks/wigole"
+	"github.com/MicahParks/wigole/api/network"
 )
 
 // Parameters holds all information that can be used for an API call to network/detail.

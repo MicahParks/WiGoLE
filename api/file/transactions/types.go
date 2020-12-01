@@ -1,7 +1,7 @@
 package transactions
 
 import (
-	"gitlab.com/MicahParks/wigole/api/file"
+	"github.com/MicahParks/wigole/api/file"
 )
 
 type TransLogResponse struct {
