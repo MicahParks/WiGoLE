@@ -1,3 +1,3 @@
-module gitlab.com/MicahParks/wigole
+module github.com/MicahParks/wigole
 
 go 1.13
