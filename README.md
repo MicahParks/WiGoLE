@@ -1,6 +1,14 @@
 [![GoDoc](https://godoc.org/gitlab.com/MicahParks/wigole?status.svg)](https://godoc.org/gitlab.com/MicahParks/wigole) [![Go Report Card](https://goreportcard.com/badge/gitlab.com/MicahParks/wigole)](https://goreportcard.com/report/gitlab.com/MicahParks/wigole) [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
 # WiGoLE
 
+This project is now archived. As of October 28th, 2022, it looks like a few of the examples still work with a valid
+`creds.json` file, but mileage may vary. I'm not sure if v2 of the WiGLE API is still deployed or if v3 is just
+partially backwards compatible. In any case, I would recommend using v3 of their API by generating a client from their
+Swagger 2.0 (OpenAPI 2) specification. My favorite way to do that is with
+[go-swagger](https://github.com/go-swagger/go-swagger). HOWEVER, I remember trying to do that for v2 of the
+WiGLE API and it didn't work due to a server side implementation that wasn't 100% compatible with the specification
+published, hence, this project.
+
 GoLang wrapper for v2 WiGLE API. Reference the API directly [here](https://api.wigle.net/swagger).
 
 # Learn
